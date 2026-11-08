@@ -1,0 +1,14 @@
+{
+  "name": "poc-lab-s8",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "path-to-regexp": "0.1.7",
+    "dotenv": "16.4.7",
+    "express": "4.21.2"
+  },
+  "description": "Fixture de laboratorio S8 para demostrar un control de gestión segura de dependencias.",
+  "scripts": {
+    "test": "node -e \"console.log('fixture listo')\""
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "poc-lab-s2",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "chalk": "6.0.1",
+    "dotenv": "16.4.7",
+    "pino": "9.6.0"
+  },
+  "description": "Fixture de laboratorio S2 para demostrar un control de gestión segura de dependencias.",
+  "scripts": {
+    "test": "node -e \"console.log('fixture listo')\""
+  }
+}

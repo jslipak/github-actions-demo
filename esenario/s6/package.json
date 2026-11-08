@@ -1,0 +1,14 @@
+{
+  "name": "poc-lab-s6",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fixture de dependencia npm obsoleta y no mantenida.",
+  "dependencies": {
+    "request": "2.88.2",
+    "chalk": "4.1.2",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "mocha": "10.8.2"
+  }
+}

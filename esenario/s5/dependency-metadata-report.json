@@ -1,0 +1,36 @@
+{
+  "project": "esenario/s5",
+  "policy": {
+    "allowedLicenses": [
+      "0BSD",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "ISC",
+      "MIT",
+      "MIT-0",
+      "Unlicense"
+    ],
+    "registry": "https://registry.npmjs.org/"
+  },
+  "checkedDependencies": 3,
+  "findings": [
+    {
+      "name": "lodash",
+      "version": "4.17.21",
+      "lockIntegrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+      "resolved": "https://packages.example.invalid/lodash/-/lodash-4.17.21.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "artifact": "lodash-4.17.21-alterado.tgz",
+      "package": "lodash",
+      "version": "4.17.21",
+      "status": "artifact-integrity-mismatch",
+      "expectedIntegrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+      "actualIntegrity": "sha512-+4yDaLmUikr3QgROuBKSAO2Hvymxqy7GeHy4zwJJChFSQeBi5iJ/aYPrBccFw9UytyC6X7l9GLjsY+bVnelbag=="
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "poc-s5-altered-artifact",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "lodash": "4.17.21",
+    "dotenv": "16.4.7",
+    "zod": "3.24.2"
+  },
+  "description": "Fixture de laboratorio S5 para demostrar un control de gestión segura de dependencias.",
+  "scripts": {
+    "test": "node -e \"console.log('fixture listo')\""
+  }
+}

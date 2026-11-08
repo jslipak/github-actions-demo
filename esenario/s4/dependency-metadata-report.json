@@ -1,0 +1,18 @@
+{
+  "project": "esenario/s4",
+  "policy": {
+    "allowedLicenses": [
+      "0BSD",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "ISC",
+      "MIT",
+      "MIT-0",
+      "Unlicense"
+    ],
+    "registry": "https://registry.npmjs.org/"
+  },
+  "checkedDependencies": 2,
+  "findings": []
+}

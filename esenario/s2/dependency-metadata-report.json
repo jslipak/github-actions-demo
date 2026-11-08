@@ -1,0 +1,154 @@
+{
+  "project": "esenario/s2",
+  "policy": {
+    "allowedLicenses": [
+      "0BSD",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "ISC",
+      "MIT",
+      "MIT-0",
+      "Unlicense"
+    ],
+    "registry": "https://registry.npmjs.org/"
+  },
+  "checkedDependencies": 15,
+  "findings": [
+    {
+      "name": "atomic-sleep",
+      "version": "1.0.0",
+      "lockIntegrity": "sha512-kNOjDqAh7px0XWNI+4QbzoiR/nTkHAWNud2uvnJquD1/x5a7EQZMJT0AczqK0Qn67oY/TTQ1LbUKajZpp3I9tQ==",
+      "resolved": "https://packages.example.invalid/atomic-sleep/-/atomic-sleep-1.0.0.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "chalk",
+      "version": "6.0.1",
+      "lockIntegrity": "sha512-/Ce6KNm3vIbWdMlNna6RVIZ/ICQxnJxCicet5LBKK9ZffBkqzDw0xh9EiKSljdRtiIQ1S1z4YgcscUUGzNCWrA==",
+      "resolved": "https://packages.example.invalid/chalk/-/chalk-6.0.1.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "dotenv",
+      "version": "16.4.7",
+      "lockIntegrity": "sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==",
+      "resolved": "https://packages.example.invalid/dotenv/-/dotenv-16.4.7.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "fast-redact",
+      "version": "3.5.0",
+      "lockIntegrity": "sha512-dwsoQlS7h9hMeYUq1W++23NDcBLV4KqONnITDV9DjfS3q1SgDGVrBdvvTLUotWtPSD7asWDV9/CmsZPy8Hf70A==",
+      "resolved": "https://packages.example.invalid/fast-redact/-/fast-redact-3.5.0.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "on-exit-leak-free",
+      "version": "2.1.2",
+      "lockIntegrity": "sha512-0eJJY6hXLGf1udHwfNftBqH+g73EU4B504nZeKpz1sYRKafAghwxEJunB2O7rDZkL4PGfsMVnTXZ2EjibbqcsA==",
+      "resolved": "https://packages.example.invalid/on-exit-leak-free/-/on-exit-leak-free-2.1.2.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "pino",
+      "version": "9.6.0",
+      "lockIntegrity": "sha512-i85pKRCt4qMjZ1+L7sy2Ag4t1atFcdbEt76+7iRJn1g2BvsnRMGu9p8pivl9fs63M2kF/A0OacFZhTub+m/qMg==",
+      "resolved": "https://packages.example.invalid/pino/-/pino-9.6.0.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "pino-abstract-transport",
+      "version": "2.0.0",
+      "lockIntegrity": "sha512-F63x5tizV6WCh4R6RHyi2Ml+M70DNRXt/+HANowMflpgGFMAym/VKm6G7ZOQRjqN7XbGxK1Lg9t6ZrtzOaivMw==",
+      "resolved": "https://packages.example.invalid/pino-abstract-transport/-/pino-abstract-transport-2.0.0.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "pino-std-serializers",
+      "version": "7.1.0",
+      "lockIntegrity": "sha512-BndPH67/JxGExRgiX1dX0w1FvZck5Wa4aal9198SrRhZjH3GxKQUKIBnYJTdj2HDN3UQAS06HlfcSbQj2OHmaw==",
+      "resolved": "https://packages.example.invalid/pino-std-serializers/-/pino-std-serializers-7.1.0.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "process-warning",
+      "version": "4.0.1",
+      "lockIntegrity": "sha512-3c2LzQ3rY9d0hc1emcsHhfT9Jwz0cChib/QN89oME2R451w5fy3f0afAhERFZAwrbDU43wk12d0ORBpDVME50Q==",
+      "resolved": "https://packages.example.invalid/process-warning/-/process-warning-4.0.1.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "quick-format-unescaped",
+      "version": "4.0.4",
+      "lockIntegrity": "sha512-tYC1Q1hgyRuHgloV/YXs2w15unPVh8qfu/qCTfhTYamaw7fyhumKa2yGpdSo87vY32rIclj+4fWYQXUMs9EHvg==",
+      "resolved": "https://packages.example.invalid/quick-format-unescaped/-/quick-format-unescaped-4.0.4.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "real-require",
+      "version": "0.2.0",
+      "lockIntegrity": "sha512-57frrGM/OCTLqLOAh0mhVA9VBMHd+9U7Zb2THMGdBUoZVOtGbJzjxsYGDJ3A9AYYCP4hn6y1TVbaOfzWtm5GFg==",
+      "resolved": "https://packages.example.invalid/real-require/-/real-require-0.2.0.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "safe-stable-stringify",
+      "version": "2.5.0",
+      "lockIntegrity": "sha512-b3rppTKm9T+PsVCBEOUR46GWI7fdOs00VKZ1+9c1EWDaDMvjQc6tUwuFyIprgGgTcWoVHSKrU8H31ZHA2e0RHA==",
+      "resolved": "https://packages.example.invalid/safe-stable-stringify/-/safe-stable-stringify-2.5.0.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "sonic-boom",
+      "version": "4.2.1",
+      "lockIntegrity": "sha512-w6AxtubXa2wTXAUsZMMWERrsIRAdrK0Sc+FUytWvYAhBJLyuI4llrMIC1DtlNSdI99EI86KZum2MMq3EAZlF9Q==",
+      "resolved": "https://packages.example.invalid/sonic-boom/-/sonic-boom-4.2.1.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "split2",
+      "version": "4.2.0",
+      "lockIntegrity": "sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==",
+      "resolved": "https://packages.example.invalid/split2/-/split2-4.2.0.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    },
+    {
+      "name": "thread-stream",
+      "version": "3.2.0",
+      "lockIntegrity": "sha512-zLBvqpwr4Esa0kRjcrzGU6zL25lePWaCLMx0RQFrmteozIfeNdaMLpG5U7PeHzvlFkAWaRKA9/KVW4F60iB+qw==",
+      "resolved": "https://packages.example.invalid/thread-stream/-/thread-stream-3.2.0.tgz",
+      "status": "unapproved-registry",
+      "resolvedHost": "packages.example.invalid",
+      "approvedHost": "registry.npmjs.org"
+    }
+  ]
+}

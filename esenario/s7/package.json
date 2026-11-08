@@ -1,0 +1,14 @@
+{
+  "name": "poc-lab-s7",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@substrate/connect-known-chains": "1.10.3",
+    "dotenv": "16.4.7",
+    "zod": "3.24.2"
+  },
+  "description": "Fixture de laboratorio S7 para demostrar un control de gestión segura de dependencias.",
+  "scripts": {
+    "test": "node -e \"console.log('fixture listo')\""
+  }
+}

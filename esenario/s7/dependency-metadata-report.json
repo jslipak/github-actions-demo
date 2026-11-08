@@ -1,0 +1,27 @@
+{
+  "project": "esenario/s7",
+  "policy": {
+    "allowedLicenses": [
+      "0BSD",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "ISC",
+      "MIT",
+      "MIT-0",
+      "Unlicense"
+    ],
+    "registry": "https://registry.npmjs.org/"
+  },
+  "checkedDependencies": 3,
+  "findings": [
+    {
+      "name": "@substrate/connect-known-chains",
+      "version": "1.10.3",
+      "lockIntegrity": "sha512-OJEZO1Pagtb6bNE3wCikc2wrmvEU5x7GxFFLqqbz1AJYYxSlrPCGu4N2og5YTExo4IcloNMQYFRkBGue0BKZ4w==",
+      "resolved": "https://registry.npmjs.org/@substrate/connect-known-chains/-/connect-known-chains-1.10.3.tgz",
+      "status": "license-policy-violation",
+      "license": "GPL-3.0-only"
+    }
+  ]
+}

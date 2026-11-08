@@ -1,0 +1,14 @@
+{
+  "name": "poc-lab-s4",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "lab-postinstall-fixture": "file:./fixtures/lab-postinstall-fixture",
+    "chalk": "5.6.2",
+    "dotenv": "16.4.7"
+  },
+  "description": "Fixture de laboratorio S4 para demostrar un control de gestión segura de dependencias.",
+  "scripts": {
+    "test": "node -e \"console.log('fixture listo')\""
+  }
+}

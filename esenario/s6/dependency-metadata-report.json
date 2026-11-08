@@ -1,0 +1,75 @@
+{
+  "project": "esenario/s6",
+  "policy": {
+    "allowedLicenses": [
+      "0BSD",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "ISC",
+      "MIT",
+      "MIT-0",
+      "Unlicense"
+    ],
+    "registry": "https://registry.npmjs.org/"
+  },
+  "checkedDependencies": 119,
+  "findings": [
+    {
+      "name": "argparse",
+      "version": "2.0.1",
+      "lockIntegrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
+      "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
+      "status": "license-policy-violation",
+      "license": "Python-2.0"
+    },
+    {
+      "name": "glob",
+      "version": "8.1.0",
+      "lockIntegrity": "sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==",
+      "resolved": "https://registry.npmjs.org/glob/-/glob-8.1.0.tgz",
+      "status": "deprecated-review",
+      "notice": "Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me"
+    },
+    {
+      "name": "har-validator",
+      "version": "5.1.5",
+      "lockIntegrity": "sha512-nmT2T0lljbxdQZfspsno9hgrG3Uir6Ks5afism62poxqBM6sDnMEuPmzTq8XN0OEwqKLLdh1jQI3qyE66Nzb3w==",
+      "resolved": "https://registry.npmjs.org/har-validator/-/har-validator-5.1.5.tgz",
+      "status": "deprecated-review",
+      "notice": "this library is no longer supported"
+    },
+    {
+      "name": "inflight",
+      "version": "1.0.6",
+      "lockIntegrity": "sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==",
+      "resolved": "https://registry.npmjs.org/inflight/-/inflight-1.0.6.tgz",
+      "status": "deprecated-review",
+      "notice": "This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful."
+    },
+    {
+      "name": "json-schema",
+      "version": "0.4.0",
+      "lockIntegrity": "sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==",
+      "resolved": "https://registry.npmjs.org/json-schema/-/json-schema-0.4.0.tgz",
+      "status": "license-policy-violation",
+      "license": "(AFL-2.1 OR BSD-3-Clause)"
+    },
+    {
+      "name": "request",
+      "version": "2.88.2",
+      "lockIntegrity": "sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==",
+      "resolved": "https://registry.npmjs.org/request/-/request-2.88.2.tgz",
+      "status": "deprecated-review",
+      "notice": "request has been deprecated, see https://github.com/request/request/issues/3142"
+    },
+    {
+      "name": "uuid",
+      "version": "3.4.0",
+      "lockIntegrity": "sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==",
+      "resolved": "https://registry.npmjs.org/uuid/-/uuid-3.4.0.tgz",
+      "status": "deprecated-review",
+      "notice": "uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028)."
+    }
+  ]
+}
