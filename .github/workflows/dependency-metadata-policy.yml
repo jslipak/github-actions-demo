@@ -1,0 +1,54 @@
+name: Dependency Metadata and Integrity Policy
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      projects: ${{ steps.projects.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: projects
+        shell: bash
+        run: |
+          projects="$(find esenario -mindepth 2 -maxdepth 2 -type f \
+            -name package-lock.json -printf '%h\n' | sort -u | jq -Rsc 'split("\n") | map(select(length > 0))')"
+          test "$projects" != '[]'
+          echo "matrix=$projects" >> "$GITHUB_OUTPUT"
+
+  metadata:
+    name: Registry metadata and integrity — ${{ matrix.project }}
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.discover.outputs.projects) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Check published integrity, license and deprecation metadata
+        id: metadata-check
+        continue-on-error: true
+        run: node .github/scripts/audit-npm-metadata.mjs "${{ matrix.project }}"
+      - name: Publish metadata report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metadata-${{ matrix.project }}
+          path: ${{ matrix.project }}/dependency-metadata-report.json
+          if-no-files-found: warn
+      - name: Apply metadata policy result
+        if: always()
+        env:
+          CHECK_OUTCOME: ${{ steps.metadata-check.outcome }}
+        run: test "$CHECK_OUTCOME" = success

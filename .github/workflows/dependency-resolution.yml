@@ -1,0 +1,86 @@
+name: Dependency Resolution and Lockfile Validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      projects: ${{ steps.projects.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: projects
+        shell: bash
+        run: |
+          projects="$(find esenario -mindepth 2 -maxdepth 2 -type f \
+            \( -name package.json -o -name pom.xml -o -name Gemfile \) \
+            -printf '%h\n' | sort -u | jq -Rsc 'split("\n") | map(select(length > 0))')"
+          test "$projects" != '[]'
+          echo "matrix=$projects" >> "$GITHUB_OUTPUT"
+
+  validate:
+    name: Resolve dependencies — ${{ matrix.project }}
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.discover.outputs.projects) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Validate and resolve manifests
+        shell: bash
+        env:
+          PROJECT: ${{ matrix.project }}
+        run: |
+          mkdir -p output
+          failures=0
+          if [[ -f "$PROJECT/package.json" && -f "$PROJECT/package-lock.json" ]]; then
+            if (cd "$PROJECT" && npm ci --ignore-scripts --no-audit --no-fund); then
+              echo 'npm ci: manifest and lockfile are consistent.'
+            else
+              status=$?
+              echo "npm ci failed with exit $status"
+              failures=1
+            fi
+          fi
+          if [[ -f "$PROJECT/pom.xml" ]]; then
+            if (cd "$PROJECT" && mvn -B -ntp dependency:tree); then
+              echo 'Maven dependency resolution completed.'
+            else
+              status=$?
+              echo "Maven dependency resolution failed with exit $status"
+              failures=1
+            fi
+          fi
+          if [[ -f "$PROJECT/Gemfile" ]]; then
+            if ! (cd "$PROJECT" && bundle install); then
+              echo 'Bundler dependency installation failed.'
+              failures=1
+            fi
+            if (cd "$PROJECT" && bundle check); then
+              echo 'Bundler manifest and lockfile are consistent.'
+            else
+              status=$?
+              echo "Bundler check failed with exit $status"
+              failures=1
+            fi
+          fi
+          exit "$failures"
