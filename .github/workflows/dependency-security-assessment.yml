@@ -1,0 +1,81 @@
+name: Evaluación de seguridad de dependencias
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-assessment:
+    name: Evaluar escenarios S0–S9
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Scan committed scenario files with Trivy
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          mkdir -p "${RUNNER_TEMP}/trivy-cache"
+
+          trivy_image="aquasec/trivy:0.76.2"
+
+          docker run --rm \
+            --volume "${RUNNER_TEMP}/trivy-cache:/root/.cache/trivy" \
+            "${trivy_image}" --version > reports/trivy-version.txt
+
+          for project in esenario/s*; do
+            [ -d "${project}" ] || continue
+            scenario="$(basename "${project}")"
+            scenario_path="/workspace/${project}"
+            skip_args=()
+            if [ -d "${project}/node_modules" ]; then
+              skip_args=(--skip-dirs "${scenario_path}/node_modules")
+            fi
+
+            docker run --rm \
+              --volume "${GITHUB_WORKSPACE}:/workspace" \
+              --volume "${RUNNER_TEMP}/trivy-cache:/root/.cache/trivy" \
+              "${trivy_image}" \
+              fs \
+              --scanners vuln,license \
+              "${skip_args[@]}" \
+              --format json \
+              --output "/workspace/reports/trivy-${scenario}.json" \
+              --exit-code 0 \
+              "${scenario_path}"
+          done
+
+          if [ -f "${RUNNER_TEMP}/trivy-cache/db/metadata.json" ]; then
+            cp "${RUNNER_TEMP}/trivy-cache/db/metadata.json" reports/trivy-db-metadata.json
+          else
+            printf '{"status":"metadata file not found in Trivy cache"}\n' \
+              > reports/trivy-db-metadata.json
+          fi
+
+      - name: Evaluate static controls and consolidate decision
+        run: |
+          set -euo pipefail
+          for project in esenario/s*; do
+            [ -d "${project}" ] || continue
+            scenario="$(basename "${project}")"
+            python3 scripts/assess_dependencies.py \
+              --project "${project}" \
+              --policy config/dependency-policy.json \
+              --trivy-report "reports/trivy-${scenario}.json" \
+              --output "reports/assessment-${scenario}.json"
+          done
+
+      - name: Upload assessment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-assessment-${{ github.run_id }}
+          path: reports/
+          if-no-files-found: warn
+          retention-days: 30

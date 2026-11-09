@@ -1,0 +1,41 @@
+{
+  "policyVersion": "1.0.0",
+  "registries": {
+    "allowedHosts": [
+      "registry.npmjs.org"
+    ]
+  },
+  "vulnerabilities": {
+    "blockSeverity": [
+      "CRITICAL"
+    ],
+    "blockCvssAtOrAbove": 9.0,
+    "reviewSeverity": [
+      "HIGH"
+    ],
+    "reviewCvssAtOrAbove": 7.0
+  },
+  "licenses": {
+    "allowed": [
+      "0BSD",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "ISC",
+      "MIT",
+      "MIT-0",
+      "Unlicense"
+    ]
+  },
+  "lifecycleEvents": [
+    "preinstall",
+    "install",
+    "postinstall",
+    "prepare"
+  ],
+  "maintenance": {
+    "maxReleaseAgeDays": 730,
+    "scope": "direct-npm-dependencies"
+  },
+  "externalSourceFailureDecision": "revision_manual"
+}

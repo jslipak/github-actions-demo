@@ -1,0 +1,43 @@
+# POC: evaluación de dependencias en CI
+
+Este repositorio contiene diez escenarios de laboratorio estáticos (S0–S9), versionados como archivos del repositorio. No se generan ni modifican durante la ejecución. En cada corrida, GitHub Actions obtiene esos mismos archivos y evalúa las dependencias declaradas para producir una decisión y evidencia. Las verificaciones se limitan a lo establecido en la tesis: no instalan paquetes de los proyectos ni ejecutan su código.
+
+## Flujo conceptual
+
+En cada `push` o `pull request`, el workflow [`.github/workflows/dependency-security-assessment.yml`](.github/workflows/dependency-security-assessment.yml), **Evaluación de seguridad de dependencias**, ejecuta un job para cada escenario. También se puede iniciar manualmente desde GitHub Actions. Cada job ejecuta Trivy para vulnerabilidades y licencias y una inspección estática para los controles de origen, lockfile y scripts. Para archivos de artefacto ya versionados, calcula su integridad y la contrasta con la referencia publicada por el registro; consulta metadatos del registro para la señal de mantenimiento. No descarga ni instala paquetes de los proyectos ni ejecuta su código. Cada job publica el reporte de Trivy, el resultado consolidado y los metadatos de la base de Trivy como artefactos.
+
+La política versionada en [`config/dependency-policy.json`](config/dependency-policy.json) establece umbrales, licencias y registros permitidos. El evaluador [`scripts/assess_dependencies.py`](scripts/assess_dependencies.py) consolida los hallazgos con precedencia **bloquear > revisión manual > permitir**. Los hallazgos esperados de los escenarios se reportan; no hacen fallar por sí solos el workflow, ya que la corrida valida estos controles de laboratorio y no es una puerta de aprobación de un producto.
+
+## Matriz de escenarios
+
+| Escenario | Ecosistema / artefactos | Control principal | Herramienta o comprobación | Decisión esperada | Evidencia a conservar |
+|---|---|---|---|---|---|
+| S0 | Ruby on Rails; `Gemfile`, `Gemfile.lock` | Caso limpio de control: manifiesto, lockfile y análisis sin hallazgos | Trivy sobre los archivos del proyecto; inspección estática de manifiesto y lockfile (sin `bundle install`) | Permitir | Reporte Trivy, archivos inspeccionados, versiones de herramientas y decisión |
+| S1 | Java/Maven; `pom.xml` | Vulnerabilidad crítica en `log4j-core:2.14.1` (Log4Shell) | Trivy sobre los archivos/manifiesto Maven, sin resolver ni descargar dependencias | Bloquear | Reporte Trivy con identificador CVE y severidad, versión de Trivy/DB y decisión |
+| S2 | npm; `package.json`, `package-lock.json`, `.npmrc` | Registro y URLs de resolución no autorizados | Inspeccionar configuración efectiva de npm y URLs del lockfile contra la política de registros permitidos | Bloquear | `.npmrc`/configuración observada, URLs detectadas, regla aplicada y decisión |
+| S3 | npm; manifiesto y lockfile | Inconsistencia entre versiones declaradas y resueltas | Comparar estáticamente las versiones declaradas en `package.json` con las fijadas en `package-lock.json`; no ejecutar `npm ci` | Bloquear | Valores comparados, archivos inspeccionados, regla aplicada y decisión |
+| S4 | npm; manifiesto y fixture local | Script `postinstall` presente; comprobarlo sin ejecutarlo | Inspección estática de `scripts` en manifiestos del proyecto y fixture; no ejecutar el hook ni instalar paquetes | Bloquear | Definición del script detectada, ruta del manifiesto y decisión |
+| S5 | npm; tarballs original y alterado | Integridad de los bytes de los artefactos versionados frente al SRI publicado por npm | Calcular SHA-512 de los tarballs ya presentes en el repositorio y comparar con la referencia de integridad publicada; no descargar ni instalar el paquete y no confiar en un hash local como referencia | Bloquear la copia alterada | Referencia SRI obtenida, hashes calculados, resultado de ambas comparaciones y decisión |
+| S6 | npm; `package.json`, `package-lock.json` | Antigüedad del último release de `request`; señal contextual de mantenimiento | Consultar metadatos reales del registro npm (sin descargar ni instalar el paquete) y comparar la fecha con el umbral versionado de la política | Revisión manual | Respuesta/metadatos del registro, fecha de observación, umbral, antigüedad calculada y decisión |
+| S7 | npm; `package.json`, `package-lock.json` | Licencia `GPL-3.0-only` no permitida por la política | Trivy con análisis de licencias; contrastar el identificador reportado con la lista permitida versionada | Bloquear | Reporte Trivy de licencia, política aplicada y decisión |
+| S8 | npm; `package.json`, `package-lock.json` | Vulnerabilidad alta en `path-to-regexp@0.1.7` | Trivy con análisis de vulnerabilidades; aplicar el umbral de revisión de la política | Revisión manual | Reporte Trivy, CVE/CVSS y severidad reportada, versión de DB y decisión |
+| S9 | npm; manifiesto, lockfile y `.npmrc` | Riesgos combinados: origen no autorizado y vulnerabilidad/integridad | Ejecutar controles de origen e integridad junto con Trivy; aplicar precedencia de política (un bloqueo prevalece) | Bloquear | Evidencia de cada control, reportes Trivy, regla de precedencia y decisión consolidada |
+
+## Reglas de interpretación
+
+- Trivy analiza vulnerabilidades y licencias. El evaluador aplica controles separados para origen, consistencia del lockfile, scripts de ciclo de vida, integridad SRI y antigüedad del release.
+- Los escenarios y sus archivos de entrada permanecen fijos; por ello, las comprobaciones estáticas deberían producir la misma evaluación para el mismo commit y configuración. Los resultados que consultan fuentes externas (en particular la base de vulnerabilidades/licencias de Trivy o metadatos del registro) pueden variar al actualizarse esas fuentes. Registrar versiones de herramientas, fecha de observación y versión/fecha de la base de Trivy para interpretar cualquier diferencia.
+- No se instalan dependencias de ningún escenario. No se ejecutan `npm install`, `npm ci`, `bundle install`, `mvn install` ni comandos equivalentes. No se ejecuta código de los proyectos; los controles de lockfile y scripts son inspecciones estáticas. La Action obtiene la imagen de Trivy y la herramienta consulta sus fuentes de datos; eso no instala dependencias de los proyectos.
+- Esta restricción delimita lo que puede afirmarse: la inspección estática de S3 identifica la discrepancia en los archivos, pero no demuestra el comportamiento de rechazo de `npm ci`; S4 detecta la declaración de `postinstall`, pero no demuestra mediante ejecución que el hook quedó inactivo. La tesis describe una corrida de laboratorio que usó `npm ci --ignore-scripts`; este pipeline de inspección sin instalación no debe presentarse como reproducción exacta de esa parte del procedimiento.
+- S6 y S8 son revisiones manuales, no permisos automáticos. En S9, una condición bloqueante prevalece sobre cualquier señal de revisión.
+- Los escenarios son casos de laboratorio diseñados para ejercitar controles. La concordancia con sus decisiones esperadas no estima eficacia general, tasas de falsos positivos o negativos ni cobertura productiva.
+- La tesis documenta una corrida real principalmente con npm y una muestra Maven. S0 aporta un fixture Ruby; su presencia no debe presentarse como validación empírica de todo ese ecosistema sin ejecutar y documentar esa evaluación.
+- El modo simulado, si se usa para pruebas deterministas del motor, debe mantenerse separado de las corridas reales y no presentarse como evidencia de detección con herramientas reales.
+
+## Criterios de aceptación del pipeline
+
+1. El workflow corre los diez escenarios S0–S9 en GitHub Actions en cada `push` y `pull request`, y permite ejecución manual.
+2. Cada escenario conserva como artefactos el reporte JSON de Trivy, los metadatos de la base y la decisión consolidada con sus hallazgos.
+3. No se instalan paquetes de los proyectos y ningún script de ciclo de vida ni código de aplicación se ejecuta durante la evaluación.
+4. La política aplica precedencia de bloqueo sobre revisión manual y revisión manual sobre permiso.
+5. El informe identifica qué ecosistemas y controles se ejecutaron realmente; no infiere cobertura a partir de la mera presencia de archivos.
