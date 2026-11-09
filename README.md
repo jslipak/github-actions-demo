@@ -4,9 +4,32 @@ Este repositorio contiene diez escenarios de laboratorio estáticos (S0–S9), v
 
 ## Flujo conceptual
 
-En cada `push` o `pull request`, el workflow [`.github/workflows/dependency-security-assessment.yml`](.github/workflows/dependency-security-assessment.yml), **Evaluación de seguridad de dependencias**, ejecuta un job para cada escenario. También se puede iniciar manualmente desde GitHub Actions. Cada job ejecuta Trivy para vulnerabilidades y licencias y una inspección estática para los controles de origen, lockfile y scripts. Para archivos de artefacto ya versionados, calcula su integridad y la contrasta con la referencia publicada por el registro; consulta metadatos del registro para la señal de mantenimiento. No descarga ni instala paquetes de los proyectos ni ejecuta su código. El resumen de la ejecución incluye una tabla de decisión y un detalle por escenario con el control, el hallazgo y evidencia relevante. Los reportes JSON completos y los metadatos de la base de Trivy se publican como artefactos.
+En cada `push` o `pull request`, el workflow [`.github/workflows/dependency-security-assessment.yml`](.github/workflows/dependency-security-assessment.yml), **Evaluación de seguridad de dependencias**, ejecuta un único job que recorre los directorios de escenarios encontrados (`esenario/s*`); no crea un job separado para cada escenario. También se puede iniciar manualmente desde GitHub Actions. El job ejecuta Trivy para vulnerabilidades y licencias y una inspección estática para los controles de origen, lockfile y scripts. Para archivos de artefacto ya versionados, calcula su integridad y la contrasta con la referencia publicada por el registro; consulta metadatos del registro para la señal de mantenimiento. No descarga ni instala paquetes de los proyectos ni ejecuta su código. El resumen de la ejecución incluye una tabla de decisión y un detalle por escenario con el control, el hallazgo y evidencia relevante. Los reportes JSON completos y los metadatos de la base de Trivy se publican como artefactos.
 
 La política versionada en [`config/dependency-policy.json`](config/dependency-policy.json) establece los registros y licencias permitidos, los umbrales de vulnerabilidad, los eventos de ciclo de vida que se inspeccionan y la antigüedad máxima para la señal de mantenimiento. **La política contiene reglas, no resultados esperados por escenario.** El evaluador [`scripts/assess_dependencies.py`](scripts/assess_dependencies.py) calcula hallazgos y decisiones a partir de los archivos del commit, Trivy y los metadatos consultados. Al finalizar, [`scripts/render_assessment_summary.py`](scripts/render_assessment_summary.py) lee los JSON de esa corrida y genera la tabla general y el detalle de cada escenario; no hay decisiones ni hallazgos preescritos en el informe. La precedencia aplicada es **bloquear > revisión manual > permitir**. Los hallazgos no hacen fallar por sí solos el workflow, ya que la corrida evalúa escenarios de laboratorio y no es una puerta de aprobación de un producto.
+
+## Cómo se calcula la decisión
+
+Los archivos de los escenarios (`S0–S9`) son las entradas estáticas de la evaluación: están versionados en el repositorio y el workflow no los genera ni modifica. En cada ejecución se vuelven a analizar y se producen reportes nuevos. Por eso, un mismo commit puede dar resultados distintos si cambia la base de vulnerabilidades/licencias de Trivy o la información consultada en el registro npm, como las fechas de publicación. Las decisiones no están escritas de antemano para cada escenario: se derivan de los hallazgos observados y de la política vigente.
+
+El evaluador aplica estos controles:
+
+| Control | Regla que aplica | Decisión si se incumple |
+|---|---|---|
+| Vulnerabilidades | Trivy informa una vulnerabilidad `CRITICAL` o con CVSS igual o superior a `9.0`. | **Bloquear** |
+| Vulnerabilidades | Trivy informa una vulnerabilidad `HIGH` o con CVSS igual o superior a `7.0`, sin cumplir antes una condición de bloqueo. | **Revisión manual** |
+| Licencias | El lockfile o Trivy informa una licencia que no está en la lista permitida: `0BSD`, `Apache-2.0`, `BSD-2-Clause`, `BSD-3-Clause`, `ISC`, `MIT`, `MIT-0` o `Unlicense`. | **Bloquear** |
+| Registro de paquetes | Una URL de resolución del lockfile o una configuración `registry` de `.npmrc` no usa HTTPS con el host permitido `registry.npmjs.org`. | **Bloquear** |
+| Consistencia del lockfile | Las dependencias directas declaradas en `dependencies`, `devDependencies` u `optionalDependencies` no coinciden con las entradas correspondientes del lockfile. | **Bloquear** |
+| Scripts de ciclo de vida | Se encuentra una declaración de `preinstall`, `install`, `postinstall` o `prepare` en un `package.json` del escenario. El comando se detecta, pero no se ejecuta. | **Bloquear** |
+| Integridad de artefactos | Para cada tarball `.tgz` bajo `artifacts/`, el SHA-512 calculado no coincide con el SRI publicado por npm para el paquete y versión correspondientes. | **Bloquear** |
+| Integridad de artefactos | No se puede asociar el tarball con el lockfile o no se puede obtener una referencia SHA-512 verificable del registro. | **Revisión manual** |
+| Mantenimiento | La última fecha de publicación disponible para una dependencia directa de npm supera los `730` días. | **Revisión manual** |
+| Mantenimiento | No se pueden obtener metadatos verificables del registro para estimar la antigüedad. | **Revisión manual** |
+
+Los umbrales, la lista de licencias, los eventos de ciclo de vida, el host permitido y las decisiones ante fallos de fuentes externas se configuran en `config/dependency-policy.json`. En la versión actual, un hallazgo de bloqueo prevalece sobre cualquier revisión manual; una revisión manual prevalece sobre permitir. Si ningún control produce hallazgos, la decisión consolidada es **permitir**. Esto significa que no se activó ninguna regla de esta política; no constituye una garantía de ausencia de riesgos.
+
+**“Bloquear” es actualmente una decisión informada en el resumen, no un bloqueo técnico del merge.** Trivy se ejecuta con `--exit-code 0` y el evaluador termina correctamente aunque la decisión sea `bloquear`; por lo tanto, los hallazgos no hacen fallar por sí solos el job ni impiden fusionar el pull request. Errores técnicos al ejecutar los pasos sí pueden hacer fallar el workflow.
 
 ## Matriz de escenarios
 
