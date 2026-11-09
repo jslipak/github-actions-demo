@@ -7,7 +7,6 @@ import argparse
 import base64
 import hashlib
 import json
-import os
 import sys
 import urllib.error
 import urllib.parse
@@ -299,8 +298,12 @@ def inspect_maintenance(
 
     observed_at = datetime.now(timezone.utc)
     records: list[dict[str, Any]] = []
+    skipped: list[dict[str, str]] = []
     threshold = settings["maxReleaseAgeDays"]
     for name, declared_version in sorted(dependencies.items()):
+        if declared_version.startswith(("file:", "git+", "git://", "http://", "https://", "workspace:")):
+            skipped.append({"package": name, "declaredVersion": declared_version, "reason": "non-registry dependency"})
+            continue
         try:
             metadata = request_registry_metadata(name)
             release_dates = [
@@ -341,6 +344,7 @@ def inspect_maintenance(
         "thresholdDays": threshold,
         "observedAt": observed_at.isoformat(),
         "packages": records,
+        "skipped": skipped,
     }
 
 
@@ -436,14 +440,6 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"{args.project}: {decision} ({len(findings)} hallazgos)")
-    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
-    if summary_path:
-        with Path(summary_path).open("a", encoding="utf-8") as summary:
-            if args.project.name == "s0":
-                summary.write("## Resultado de evaluación por escenario\n\n| Escenario | Decisión | Hallazgos |\n|---|---:|---:|\n")
-            summary.write(
-                f"| {args.project} | **{decision.replace('_', ' ')}** | {len(findings)} |\n"
-            )
     return 0
 
 

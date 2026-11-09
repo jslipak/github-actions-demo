@@ -71,6 +71,12 @@ jobs:
               --output "reports/assessment-${scenario}.json"
           done
 
+      - name: Render scenario summary
+        run: |
+          set -euo pipefail
+          python3 scripts/render_assessment_summary.py reports/assessment-s*.json \
+            >> "${GITHUB_STEP_SUMMARY}"
+
       - name: Upload assessment evidence
         if: always()
         uses: actions/upload-artifact@v4
