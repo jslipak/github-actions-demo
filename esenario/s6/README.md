@@ -1,6 +1,8 @@
-# S6 — Dependencia obsoleta
+# S6 — Señal de antigüedad de release
 
-Proyecto npm que fija request 2.88.2 (paquete abandonado), más chalk, lodash y Mocha. El hallazgo de mantenimiento debe derivar a revisión manual, no a bloqueo automático.
+Proyecto npm que fija `is-promise@4.0.0`. Su último release es antiguo frente al umbral definido en la política, por lo que la señal de mantenimiento debe derivar a revisión manual. La antigüedad por sí sola no demuestra que un paquete esté abandonado.
+
+`dependency-metadata-report.json` y el directorio `node_modules/` corresponden al fixture anterior; no son entradas del workflow actual. El directorio se excluye del escaneo y la evidencia vigente se genera en cada corrida de GitHub Actions.
 
 ## Archivos
 
