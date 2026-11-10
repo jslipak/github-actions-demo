@@ -1,5 +1,5 @@
 {
-  "policyVersion": "1.0.0",
+  "policyVersion": "1.1.0",
   "registries": {
     "allowedHosts": [
       "registry.npmjs.org"
@@ -36,6 +36,28 @@
   "maintenance": {
     "maxReleaseAgeDays": 730,
     "scope": "direct-npm-dependencies"
+  },
+  "dependencyIntegrity": {
+    "invalidSignatureDecision": "bloquear",
+    "missingSignatureDecision": "revision_manual",
+    "verificationFailureDecision": "revision_manual",
+    "artifactMismatchDecision": "bloquear",
+    "weakDigestDecision": "revision_manual"
+  },
+  "sigstore": {
+    "certificateOidcIssuer": "https://token.actions.githubusercontent.com",
+    "trustedIdentityRegexes": [],
+    "requireBundleForArtifacts": true,
+    "requireBundleForPublishedDependencies": false
+  },
+  "nonNpmIntegrity": {
+    "rubyGemsAllowedHosts": [
+      "rubygems.org"
+    ],
+    "mavenAllowedHosts": [
+      "repo.maven.apache.org"
+    ],
+    "mavenRepository": "https://repo.maven.apache.org/maven2"
   },
   "externalSourceFailureDecision": "revision_manual"
 }

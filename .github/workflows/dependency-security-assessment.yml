@@ -17,6 +17,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Node.js for npm integrity verification
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install Cosign for non-npm artifact bundles
+        uses: sigstore/cosign-installer@v4.0.0
+        with:
+          cosign-release: v3.0.2
+
+      - name: Record dependency verification tool versions
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          node --version > reports/node-version.txt
+          npm --version > reports/npm-version.txt
+          cosign version > reports/cosign-version.txt
+
       - name: Scan committed scenario files with Trivy
         run: |
           set -euo pipefail
@@ -58,6 +76,42 @@ jobs:
               > reports/trivy-db-metadata.json
           fi
 
+      - name: Verify npm dependency installation and registry signatures
+        run: |
+          set -euo pipefail
+          for project in esenario/s*; do
+            [ -d "${project}" ] || continue
+            scenario="$(basename "${project}")"
+            python3 scripts/verify_npm_dependencies.py \
+              --project "${project}" \
+              --policy config/dependency-policy.json \
+              --output "reports/npm-integrity-${scenario}.json"
+          done
+
+      - name: Verify direct RubyGems and Maven artifact integrity
+        run: |
+          set -euo pipefail
+          for project in esenario/s*; do
+            [ -d "${project}" ] || continue
+            scenario="$(basename "${project}")"
+            python3 scripts/verify_non_npm_dependencies.py \
+              --project "${project}" \
+              --policy config/dependency-policy.json \
+              --output "reports/non-npm-integrity-${scenario}.json"
+          done
+
+      - name: Verify Sigstore bundles for non-npm artifacts
+        run: |
+          set -euo pipefail
+          for project in esenario/s*; do
+            [ -d "${project}" ] || continue
+            scenario="$(basename "${project}")"
+            python3 scripts/verify_sigstore_artifacts.py \
+              --project "${project}" \
+              --policy config/dependency-policy.json \
+              --output "reports/sigstore-${scenario}.json"
+          done
+
       - name: Evaluate static controls and consolidate decision
         run: |
           set -euo pipefail
@@ -68,6 +122,9 @@ jobs:
               --project "${project}" \
               --policy config/dependency-policy.json \
               --trivy-report "reports/trivy-${scenario}.json" \
+              --npm-integrity-report "reports/npm-integrity-${scenario}.json" \
+              --non-npm-integrity-report "reports/non-npm-integrity-${scenario}.json" \
+              --sigstore-report "reports/sigstore-${scenario}.json" \
               --output "reports/assessment-${scenario}.json"
           done
 

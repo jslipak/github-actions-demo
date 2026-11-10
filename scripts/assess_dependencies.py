@@ -407,11 +407,40 @@ def inspect_trivy(
     }
 
 
+def inspect_integrity_reports(
+    npm_report_path: Path | None,
+    non_npm_report_path: Path | None,
+    sigstore_report_path: Path | None,
+    findings: list[dict[str, Any]],
+    evidence: dict[str, Any],
+) -> None:
+    for report_path, evidence_key in (
+        (npm_report_path, "npmIntegrity"),
+        (non_npm_report_path, "nonNpmIntegrity"),
+        (sigstore_report_path, "sigstore"),
+    ):
+        if report_path is None or not report_path.is_file():
+            continue
+        report = read_json(report_path)
+        evidence[evidence_key] = report
+        for finding in report.get("findings", []):
+            add_finding(
+                findings,
+                finding["control"],
+                finding["decision"],
+                finding["message"],
+                finding.get("evidence"),
+            )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project", required=True, type=Path)
     parser.add_argument("--policy", required=True, type=Path)
     parser.add_argument("--trivy-report", required=True, type=Path)
+    parser.add_argument("--npm-integrity-report", type=Path)
+    parser.add_argument("--non-npm-integrity-report", type=Path)
+    parser.add_argument("--sigstore-report", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
 
@@ -421,6 +450,13 @@ def main() -> int:
 
     if (args.project / "package.json").is_file():
         inspect_npm_project(args.project, policy, findings, evidence)
+    inspect_integrity_reports(
+        args.npm_integrity_report,
+        args.non_npm_integrity_report,
+        args.sigstore_report,
+        findings,
+        evidence,
+    )
     inspect_trivy(args.trivy_report, policy, findings, evidence)
 
     decision = max(

@@ -28,6 +28,32 @@ EVIDENCE_KEYS = (
     "matches",
     "mismatches",
     "error",
+    "file",
+    "command",
+    "npmVersion",
+    "nodeVersion",
+    "registrySignatures",
+    "provenance",
+    "invalid",
+    "missing",
+    "exitCode",
+    "summaryExitCode",
+    "verifiedRegistrySignatureCount",
+    "localDependenciesNotRegistrySigned",
+    "createdMarkers",
+    "expectedBundle",
+    "trustedIdentityRegex",
+    "groupId",
+    "artifactId",
+    "version",
+    "digestAlgorithm",
+    "publishedDigest",
+    "actualDigest",
+    "source",
+    "platform",
+    "lockRequirement",
+    "satisfiesLockRequirement",
+    "bundleUrl",
 )
 
 
@@ -40,6 +66,64 @@ def evidence_summary(finding: dict[str, Any]) -> str:
     evidence = finding.get("evidence", {})
     selected = {key: evidence[key] for key in EVIDENCE_KEYS if key in evidence}
     return json.dumps(selected, ensure_ascii=False, sort_keys=True) if selected else "—"
+
+
+def verification_rows(evidence: dict[str, Any]) -> list[tuple[str, str, str]]:
+    rows: list[tuple[str, str, str]] = []
+    npm = evidence.get("npmIntegrity")
+    if isinstance(npm, dict):
+        install = npm.get("install", {})
+        if install:
+            install_status = "completada" if install.get("exitCode") == 0 else "fallida"
+        else:
+            install_status = npm.get("status", "sin ejecutar")
+        rows.append(("npm ci --ignore-scripts", str(install_status), str(npm.get("reason", "copia temporal"))))
+
+        signatures = npm.get("signatureVerification", {})
+        if signatures:
+            rows.append((
+                "Firmas del registro npm",
+                str(signatures.get("registrySignatures", "sin verificar")),
+                f"npm {npm.get('npmVersion', 'desconocido')}; verificadas={signatures.get('verifiedRegistrySignatureCount', 'n/d')}; inválidas={len(signatures.get('invalid', []))}; ausentes={len(signatures.get('missing', []))}",
+            ))
+            local_packages = signatures.get("localDependenciesNotRegistrySigned", [])
+            if local_packages:
+                rows.append((
+                    "Dependencias locales fuera de firmas npm",
+                    "no aplicable",
+                    ", ".join(item.get("packagePath", "") for item in local_packages),
+                ))
+            rows.append((
+                "Provenance npm",
+                str(signatures.get("provenance", "no reportada")),
+                f"atestaciones verificadas={len(signatures.get('verifiedAttestations', []))}",
+            ))
+        marker = npm.get("lifecycleMarkerCheck", {})
+        if marker.get("checked"):
+            changed = marker.get("createdOrChangedDuringInstall", [])
+            rows.append(("Marcador postinstall S4", "creado/modificado" if changed else "no creado", json.dumps(changed, ensure_ascii=False)))
+
+    non_npm = evidence.get("nonNpmIntegrity")
+    if isinstance(non_npm, dict):
+        records = non_npm.get("directDependencies", [])
+        details = non_npm.get("reason", "")
+        if records:
+            details = "; ".join(
+                f"{item.get('package', item.get('artifactId', 'paquete'))}@{item.get('version', '?')} "
+                f"{item.get('digestAlgorithm', 'hash')}={'coincide' if item.get('matches') else 'sin coincidencia/no verificado'} "
+                f"Sigstore={item.get('sigstore', {}).get('status', 'sin bundle') if isinstance(item.get('sigstore'), dict) else 'sin bundle'}"
+                for item in records
+            )
+        rows.append((f"Integridad directa {non_npm.get('ecosystem', 'no-npm')}", str(non_npm.get("status", "sin ejecutar")), str(details)))
+
+    sigstore = evidence.get("sigstore")
+    if isinstance(sigstore, dict):
+        artifact_records = sigstore.get("artifacts", [])
+        details = sigstore.get("reason", "")
+        if artifact_records:
+            details = "; ".join(f"{Path(item['artifact']).name}: {item['status']}" for item in artifact_records)
+        rows.append(("Cosign / Sigstore", str(sigstore.get("status", "sin ejecutar")), str(details)))
+    return rows
 
 
 def main() -> int:
@@ -61,6 +145,13 @@ def main() -> int:
     for assessment in assessments:
         scenario = Path(assessment["project"]).name
         print(f"\n### Detalle de {markdown_cell(scenario)}\n")
+        controls = verification_rows(assessment.get("evidence", {}))
+        if controls:
+            print("| Control de integridad/procedencia | Estado | Detalle |")
+            print("|---|---|---|")
+            for control, status, detail in controls:
+                print("| " + " | ".join(markdown_cell(value) for value in (control, status, detail or "—")) + " |")
+            print()
         print("| Control | Qué ocurrió | Evidencia relevante | Decisión |")
         print("|---|---|---|---:|")
         findings = assessment["findings"]
