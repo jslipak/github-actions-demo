@@ -54,6 +54,11 @@ EVIDENCE_KEYS = (
     "lockRequirement",
     "satisfiesLockRequirement",
     "bundleUrl",
+    "image",
+    "type",
+    "packageType",
+    "packageClass",
+    "fixedVersion",
 )
 
 
@@ -123,6 +128,20 @@ def verification_rows(evidence: dict[str, Any]) -> list[tuple[str, str, str]]:
         if artifact_records:
             details = "; ".join(f"{Path(item['artifact']).name}: {item['status']}" for item in artifact_records)
         rows.append(("Cosign / Sigstore", str(sigstore.get("status", "sin ejecutar")), str(details)))
+
+    compose = evidence.get("compose")
+    if isinstance(compose, dict) and compose.get("composeFile"):
+        test = compose.get("test", {})
+        rows.append((
+            "Pruebas Docker Compose",
+            str(test.get("status", "sin ejecutar")),
+            f"servicio={test.get('service', 'test')}; exit={test.get('exitCode', 'n/d')}",
+        ))
+        scans = compose.get("imageScanReports", [])
+        if scans:
+            details = "; ".join(f"{item.get('image')}: {item.get('status')}" for item in scans)
+            status = "analizada" if all(item.get("status") == "scanned" for item in scans) else "incompleta"
+            rows.append(("Trivy imagen (paquetes OS)", status, details))
     return rows
 
 

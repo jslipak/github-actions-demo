@@ -1,5 +1,5 @@
 {
-  "policyVersion": "1.1.0",
+  "policyVersion": "1.2.0",
   "registries": {
     "allowedHosts": [
       "registry.npmjs.org"
@@ -12,6 +12,17 @@
     "blockCvssAtOrAbove": 9.0,
     "reviewSeverity": [
       "HIGH"
+    ],
+    "reviewCvssAtOrAbove": 7.0
+  },
+  "containerImageVulnerabilities": {
+    "blockSeverity": [
+      "HIGH",
+      "CRITICAL"
+    ],
+    "blockCvssAtOrAbove": 9.0,
+    "reviewSeverity": [
+      "MEDIUM"
     ],
     "reviewCvssAtOrAbove": 7.0
   },

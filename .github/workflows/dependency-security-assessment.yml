@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   dependency-assessment:
-    name: Evaluar escenarios S0–S9
+    name: Evaluar escenarios S0–S10
     runs-on: ubuntu-latest
 
     steps:
@@ -112,6 +112,22 @@ jobs:
               --output "reports/sigstore-${scenario}.json"
           done
 
+      - name: Scan Compose images with Trivy and run container tests
+        run: |
+          set -euo pipefail
+          trivy_image="aquasec/trivy:0.76.2"
+          for project in esenario/s*; do
+            [ -d "${project}" ] || continue
+            scenario="$(basename "${project}")"
+            python3 scripts/run_compose_scenario.py \
+              --project "${project}" \
+              --workspace "${GITHUB_WORKSPACE}" \
+              --reports-dir "${GITHUB_WORKSPACE}/reports" \
+              --trivy-cache "${RUNNER_TEMP}/trivy-cache" \
+              --trivy-image "${trivy_image}" \
+              --output "reports/compose-${scenario}.json"
+          done
+
       - name: Evaluate static controls and consolidate decision
         run: |
           set -euo pipefail
@@ -125,6 +141,7 @@ jobs:
               --npm-integrity-report "reports/npm-integrity-${scenario}.json" \
               --non-npm-integrity-report "reports/non-npm-integrity-${scenario}.json" \
               --sigstore-report "reports/sigstore-${scenario}.json" \
+              --compose-report "reports/compose-${scenario}.json" \
               --output "reports/assessment-${scenario}.json"
           done
 

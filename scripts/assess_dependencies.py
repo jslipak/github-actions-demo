@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Inspect committed dependency metadata and consolidate findings without installing packages."""
+"""Inspect dependency metadata and consolidate static, container, and test evidence."""
 
 from __future__ import annotations
 
@@ -407,6 +407,118 @@ def inspect_trivy(
     }
 
 
+def inspect_container_image_trivy(
+    report_path: Path,
+    image: str,
+    policy: dict[str, Any],
+    findings: list[dict[str, Any]],
+    image_vulnerabilities: list[dict[str, Any]],
+) -> None:
+    report = read_json(report_path)
+    vuln_policy = policy["containerImageVulnerabilities"]
+    for result in report.get("Results", []):
+        # The Compose scanner is explicitly run with --pkg-types os. Keep the
+        # policy scoped to OS packages even if a report is supplied manually.
+        if result.get("Class") != "os-pkgs":
+            continue
+        for vulnerability in result.get("Vulnerabilities", []) or []:
+            severity = str(vulnerability.get("Severity", "UNKNOWN")).upper()
+            cvss = trivy_cvss(vulnerability)
+            record = {
+                "image": image,
+                "target": result.get("Target"),
+                "packageType": result.get("Type"),
+                "packageClass": result.get("Class"),
+                "package": vulnerability.get("PkgName"),
+                "installedVersion": vulnerability.get("InstalledVersion"),
+                "fixedVersion": vulnerability.get("FixedVersion"),
+                "vulnerabilityId": vulnerability.get("VulnerabilityID"),
+                "severity": severity,
+                "cvss": cvss,
+            }
+            image_vulnerabilities.append(record)
+            if severity in vuln_policy["blockSeverity"] or cvss >= vuln_policy["blockCvssAtOrAbove"]:
+                add_finding(
+                    findings,
+                    "container_os_vulnerability",
+                    "bloquear",
+                    "Trivy detectó una vulnerabilidad bloqueante en un paquete del sistema operativo de la imagen.",
+                    record,
+                )
+            elif severity in vuln_policy["reviewSeverity"] or cvss >= vuln_policy["reviewCvssAtOrAbove"]:
+                add_finding(
+                    findings,
+                    "container_os_vulnerability",
+                    "revision_manual",
+                    "Trivy detectó una vulnerabilidad para revisión en un paquete del sistema operativo de la imagen.",
+                    record,
+                )
+
+
+def inspect_compose_report(
+    report_path: Path | None,
+    policy: dict[str, Any],
+    findings: list[dict[str, Any]],
+    evidence: dict[str, Any],
+) -> None:
+    if report_path is None or not report_path.is_file():
+        return
+    report = read_json(report_path)
+    evidence["compose"] = report
+    if not report.get("composeFile"):
+        return
+
+    compose_findings = report.get("findings", [])
+    for finding in compose_findings:
+        add_finding(
+            findings,
+            finding["control"],
+            finding["decision"],
+            finding["message"],
+            finding.get("evidence"),
+        )
+
+    test = report.get("test", {})
+    if test.get("status") != "passed" and not any(
+        finding.get("control") == "docker_compose_test" for finding in compose_findings
+    ):
+        add_finding(
+            findings,
+            "docker_compose_test",
+            "revision_manual",
+            "Las pruebas definidas en Docker Compose no finalizaron correctamente.",
+            {"status": test.get("status"), "service": test.get("service"), "exitCode": test.get("exitCode"), "error": test.get("error")},
+        )
+
+    image_reports = report.get("imageScanReports", [])
+    image_vulnerabilities: list[dict[str, Any]] = []
+    if not image_reports and not any(
+        finding.get("control") == "container_image_scan" for finding in compose_findings
+    ):
+        add_finding(
+            findings,
+            "container_image_scan",
+            "revision_manual",
+            "Compose no produjo un reporte Trivy para ninguna imagen.",
+            {"composeFile": report.get("composeFile"), "images": report.get("images", [])},
+        )
+    for scan in image_reports:
+        scan_path = Path(scan.get("report", ""))
+        if scan.get("status") != "scanned" or not scan_path.is_file():
+            if any(finding.get("control") == "container_image_scan" for finding in compose_findings):
+                continue
+            add_finding(
+                findings,
+                "container_image_scan",
+                "revision_manual",
+                "No se pudo verificar el reporte Trivy de una imagen de Compose.",
+                {"image": scan.get("image"), "report": scan.get("report"), "status": scan.get("status"), "error": scan.get("error")},
+            )
+            continue
+        inspect_container_image_trivy(scan_path, str(scan.get("image", "")), policy, findings, image_vulnerabilities)
+    evidence["containerImageVulnerabilities"] = image_vulnerabilities
+
+
 def inspect_integrity_reports(
     npm_report_path: Path | None,
     non_npm_report_path: Path | None,
@@ -441,6 +553,7 @@ def main() -> int:
     parser.add_argument("--npm-integrity-report", type=Path)
     parser.add_argument("--non-npm-integrity-report", type=Path)
     parser.add_argument("--sigstore-report", type=Path)
+    parser.add_argument("--compose-report", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
 
@@ -457,6 +570,7 @@ def main() -> int:
         findings,
         evidence,
     )
+    inspect_compose_report(args.compose_report, policy, findings, evidence)
     inspect_trivy(args.trivy_report, policy, findings, evidence)
 
     decision = max(

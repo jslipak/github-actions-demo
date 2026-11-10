@@ -1,0 +1,25 @@
+services:
+  test:
+    image: ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    tmpfs:
+      - /workspace/log
+      - /workspace/tmp
+    environment:
+      BUNDLE_FROZEN: "true"
+      BUNDLE_JOBS: "4"
+      BUNDLE_PATH: /tmp/bundle
+      BUNDLE_RETRY: "5"
+      BUNDLE_TIMEOUT: "60"
+      RAILS_ENV: test
+    entrypoint: ["/bin/sh", "-ec"]
+    command:
+      - |
+        apk add --no-cache build-base sqlite-dev sqlite-libs tzdata
+        bundle install --jobs 4 --retry 5 --quiet
+        bundle exec rackup --host 127.0.0.1 --port 3000 config.ru >/tmp/s10-rails-server.log 2>&1 &
+        server_pid=$$!
+        trap 'kill "$$server_pid" 2>/dev/null || true; wait "$$server_pid" 2>/dev/null || true' EXIT
+        bundle exec ruby test/health_smoke_test.rb
