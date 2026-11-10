@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -145,13 +146,22 @@ def verification_rows(evidence: dict[str, Any]) -> list[tuple[str, str, str]]:
     return rows
 
 
+def scenario_sort_key(assessment: dict[str, Any]) -> tuple[int, int | str, str]:
+    scenario = Path(assessment["project"]).name
+    match = re.fullmatch(r"s(\d+)", scenario, flags=re.IGNORECASE)
+    if match:
+        return (0, int(match.group(1)), scenario.casefold())
+    return (1, scenario.casefold(), scenario)
+
+
 def main() -> int:
     reports = [Path(name) for name in sys.argv[1:]]
     if not reports:
         print("No assessment reports were provided.", file=sys.stderr)
         return 2
 
-    assessments = [json.loads(path.read_text(encoding="utf-8")) for path in sorted(reports)]
+    assessments = [json.loads(path.read_text(encoding="utf-8")) for path in reports]
+    assessments.sort(key=scenario_sort_key)
 
     print("## Resumen de decisiones\n")
     print("| Escenario | Decisión | Hallazgos |")
