@@ -1,0 +1,32 @@
+{
+  "project": "esenario/s5",
+  "ecosystem": "npm",
+  "observedAt": "2026-11-11T01:15:52.369552+00:00",
+  "status": "skipped",
+  "findings": [],
+  "preflight": {
+    "eligible": false,
+    "reasons": [
+      "El escenario contiene un registro o una URL de resolución no autorizados."
+    ],
+    "mismatches": {},
+    "unapprovedSources": [
+      {
+        "packagePath": "node_modules/lodash",
+        "url": "https://packages.example.invalid/lodash/-/lodash-4.17.21.tgz"
+      }
+    ],
+    "localDependencies": [],
+    "registryDependencies": [
+      {
+        "packagePath": "node_modules/dotenv",
+        "url": "https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz"
+      },
+      {
+        "packagePath": "node_modules/zod",
+        "url": "https://registry.npmjs.org/zod/-/zod-3.24.2.tgz"
+      }
+    ]
+  },
+  "reason": "Se omitió la instalación para no descargar desde fuentes no autorizadas ni resolver un lockfile inconsistente."
+}

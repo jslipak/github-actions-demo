@@ -1,0 +1,8 @@
+{
+  "project": "esenario/s10",
+  "ecosystem": "npm",
+  "observedAt": "2026-11-11T01:15:48.418949+00:00",
+  "status": "not_applicable",
+  "findings": [],
+  "reason": "El escenario no es un proyecto npm con lockfile."
+}

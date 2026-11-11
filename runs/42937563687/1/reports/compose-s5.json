@@ -1,0 +1,14 @@
+{
+  "project": "/home/runner/work/github-actions-demo/github-actions-demo/esenario/s5",
+  "observedAt": "2026-11-11T01:16:46.754909+00:00",
+  "status": "not_applicable",
+  "composeFile": null,
+  "images": [],
+  "imageScanReports": [],
+  "test": {
+    "status": "not_applicable",
+    "service": "test"
+  },
+  "findings": [],
+  "reason": "El escenario no contiene un archivo Docker Compose."
+}

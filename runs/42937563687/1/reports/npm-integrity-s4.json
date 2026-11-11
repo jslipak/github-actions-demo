@@ -1,0 +1,84 @@
+{
+  "project": "esenario/s4",
+  "ecosystem": "npm",
+  "observedAt": "2026-11-11T01:15:48.624136+00:00",
+  "status": "passed",
+  "findings": [],
+  "preflight": {
+    "eligible": true,
+    "reasons": [],
+    "mismatches": {},
+    "unapprovedSources": [],
+    "localDependencies": [
+      {
+        "packagePath": "node_modules/lab-postinstall-fixture",
+        "resolved": "fixtures/lab-postinstall-fixture"
+      }
+    ],
+    "registryDependencies": [
+      {
+        "packagePath": "node_modules/chalk",
+        "url": "https://registry.npmjs.org/chalk/-/chalk-5.6.2.tgz"
+      },
+      {
+        "packagePath": "node_modules/dotenv",
+        "url": "https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz"
+      }
+    ]
+  },
+  "npmVersion": "11.19.1",
+  "nodeVersion": "v24.22.2",
+  "install": {
+    "command": [
+      "npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "--registry=https://registry.npmjs.org/",
+      "--userconfig=<configuración temporal>"
+    ],
+    "exitCode": 0,
+    "scriptsIgnored": true,
+    "stdout": "\nadded 3 packages in 2s\n",
+    "stderr": ""
+  },
+  "lifecycleMarkerCheck": {
+    "checked": true,
+    "marker": "postinstall-marker.txt",
+    "createdOrChangedDuringInstall": [],
+    "scriptsIgnored": true
+  },
+  "signatureVerification": {
+    "command": [
+      "npm",
+      "audit",
+      "signatures",
+      "--json",
+      "--include-attestations"
+    ],
+    "summaryCommand": [
+      "npm",
+      "audit",
+      "signatures"
+    ],
+    "exitCode": 0,
+    "summaryExitCode": 0,
+    "registrySignatures": "verified",
+    "verifiedRegistrySignatureCount": 2,
+    "registryDependenciesExpected": 2,
+    "humanSummary": "audited 2 packages in 0s\n\n2 packages have verified registry signatures\n\n",
+    "invalid": [],
+    "missing": [],
+    "provenance": "no_attestation_reported",
+    "verifiedAttestations": [],
+    "localDependenciesNotRegistrySigned": [
+      {
+        "packagePath": "node_modules/lab-postinstall-fixture",
+        "resolved": "fixtures/lab-postinstall-fixture"
+      }
+    ],
+    "summaryError": null,
+    "stderr": ""
+  }
+}
