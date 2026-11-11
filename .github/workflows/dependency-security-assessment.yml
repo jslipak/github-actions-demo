@@ -12,10 +12,15 @@ jobs:
   dependency-assessment:
     name: Evaluar escenarios S0–S10
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
 
       - name: Set up Node.js for npm integrity verification
         uses: actions/setup-node@v4
@@ -159,3 +164,70 @@ jobs:
           path: reports/
           if-no-files-found: warn
           retention-days: 30
+
+      - name: Save assessment evidence to evidencias branch
+        if: >-
+          always() &&
+          (github.event_name != 'pull_request' ||
+           github.event.pull_request.head.repo.full_name == github.repository)
+        run: |
+          set -euo pipefail
+
+          if [ ! -d reports ] || ! find reports -type f -print -quit 2>/dev/null | grep -q .; then
+            echo "No hay archivos de evidencia para guardar."
+            exit 0
+          fi
+
+          run_path="runs/${GITHUB_RUN_ID}/${GITHUB_RUN_ATTEMPT}"
+          upload_dir="${RUNNER_TEMP}/evidence-upload/${run_path}"
+          evidence_worktree="${RUNNER_TEMP}/evidencias-branch"
+          mkdir -p "${upload_dir}"
+          cp -a reports "${upload_dir}/reports"
+
+          if git fetch --depth=1 origin +refs/heads/evidencias:refs/remotes/origin/evidencias; then
+            git worktree add --detach "${evidence_worktree}" refs/remotes/origin/evidencias
+          else
+            git worktree add --orphan -b evidencias "${evidence_worktree}"
+          fi
+
+          git -C "${evidence_worktree}" config user.name "github-actions[bot]"
+          git -C "${evidence_worktree}" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          copy_evidence() {
+            if git -C "${evidence_worktree}" ls-tree -r --name-only HEAD -- "${run_path}" 2>/dev/null | grep -q .; then
+              echo "::error::Ya existe evidencia para ${run_path}; no se sobrescribirá."
+              return 1
+            fi
+
+            rm -rf "${evidence_worktree}/${run_path}"
+            mkdir -p "${evidence_worktree}/${run_path}"
+            cp -a "${upload_dir}/reports" "${evidence_worktree}/${run_path}/reports"
+            git -C "${evidence_worktree}" add -- "${run_path}"
+            git -C "${evidence_worktree}" commit -m "Save evidence for run ${GITHUB_RUN_ID} attempt ${GITHUB_RUN_ATTEMPT}"
+          }
+
+          copy_evidence
+
+          for attempt in 1 2 3 4 5; do
+            if git -C "${evidence_worktree}" push origin HEAD:refs/heads/evidencias; then
+              echo "Evidencia guardada en ${run_path}."
+              exit 0
+            fi
+
+            if [ "${attempt}" -eq 5 ]; then
+              break
+            fi
+
+            git fetch --depth=1 origin +refs/heads/evidencias:refs/remotes/origin/evidencias
+            git -C "${evidence_worktree}" reset --hard refs/remotes/origin/evidencias
+
+            if git -C "${evidence_worktree}" ls-tree -r --name-only HEAD -- "${run_path}" 2>/dev/null | grep -q .; then
+              echo "La evidencia ${run_path} ya quedó guardada por un intento concurrente."
+              exit 0
+            fi
+
+            copy_evidence
+          done
+
+          echo "::error::No se pudo publicar la evidencia después de varios intentos."
+          exit 1
