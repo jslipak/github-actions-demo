@@ -154,7 +154,8 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/render_assessment_summary.py reports/assessment-s*.json \
-            >> "${GITHUB_STEP_SUMMARY}"
+            > reports/assessment-summary.md
+          cat reports/assessment-summary.md >> "${GITHUB_STEP_SUMMARY}"
 
       - name: Upload assessment evidence
         if: always()
