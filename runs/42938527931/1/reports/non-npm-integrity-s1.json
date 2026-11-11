@@ -1,0 +1,133 @@
+{
+  "project": "esenario/s1",
+  "observedAt": "2026-11-11T01:23:27.488705+00:00",
+  "status": "review",
+  "directDependencies": [
+    {
+      "groupId": "org.apache.logging.log4j",
+      "artifactId": "log4j-core",
+      "version": "2.14.1",
+      "type": "jar",
+      "classifier": "",
+      "scope": "compile",
+      "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar",
+      "digestAlgorithm": "sha1",
+      "publishedDigest": "9141212b8507ab50a45525b545b39d224614528b",
+      "actualDigest": "9141212b8507ab50a45525b545b39d224614528b",
+      "matches": true,
+      "sigstore": {
+        "status": "no_bundle_published",
+        "bundleUrl": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar.sigstore.json"
+      }
+    },
+    {
+      "groupId": "org.apache.logging.log4j",
+      "artifactId": "log4j-api",
+      "version": "2.14.1",
+      "type": "jar",
+      "classifier": "",
+      "scope": "compile",
+      "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar",
+      "digestAlgorithm": "sha1",
+      "publishedDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+      "actualDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+      "matches": true,
+      "sigstore": {
+        "status": "no_bundle_published",
+        "bundleUrl": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar.sigstore.json"
+      }
+    },
+    {
+      "groupId": "org.slf4j",
+      "artifactId": "slf4j-api",
+      "version": "1.7.36",
+      "type": "jar",
+      "classifier": "",
+      "scope": "compile",
+      "source": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar",
+      "digestAlgorithm": "sha1",
+      "publishedDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+      "actualDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+      "matches": true,
+      "sigstore": {
+        "status": "no_bundle_published",
+        "bundleUrl": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar.sigstore.json"
+      }
+    },
+    {
+      "groupId": "org.junit.jupiter",
+      "artifactId": "junit-jupiter",
+      "version": "5.10.2",
+      "type": "jar",
+      "classifier": "",
+      "scope": "test",
+      "source": "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar",
+      "digestAlgorithm": "sha512",
+      "publishedDigest": "d10edf43b62c5947b50c506e84d65829138970acd6a85c066d7c6ca192477bed197af77866f6b18ea7b8ebc8a1a16666dc7982a967533079e8927a65aa3b484d",
+      "actualDigest": "d10edf43b62c5947b50c506e84d65829138970acd6a85c066d7c6ca192477bed197af77866f6b18ea7b8ebc8a1a16666dc7982a967533079e8927a65aa3b484d",
+      "matches": true,
+      "sigstore": {
+        "status": "no_bundle_published",
+        "bundleUrl": "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar.sigstore.json"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "control": "maven_checksum_strength",
+      "decision": "revision_manual",
+      "message": "Maven Central solo publicó SHA-1 para este artefacto; el checksum coincide, pero requiere revisión por su algoritmo débil.",
+      "evidence": {
+        "groupId": "org.apache.logging.log4j",
+        "artifactId": "log4j-core",
+        "version": "2.14.1",
+        "type": "jar",
+        "classifier": "",
+        "scope": "compile",
+        "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar",
+        "digestAlgorithm": "sha1",
+        "publishedDigest": "9141212b8507ab50a45525b545b39d224614528b",
+        "actualDigest": "9141212b8507ab50a45525b545b39d224614528b",
+        "matches": true
+      }
+    },
+    {
+      "control": "maven_checksum_strength",
+      "decision": "revision_manual",
+      "message": "Maven Central solo publicó SHA-1 para este artefacto; el checksum coincide, pero requiere revisión por su algoritmo débil.",
+      "evidence": {
+        "groupId": "org.apache.logging.log4j",
+        "artifactId": "log4j-api",
+        "version": "2.14.1",
+        "type": "jar",
+        "classifier": "",
+        "scope": "compile",
+        "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar",
+        "digestAlgorithm": "sha1",
+        "publishedDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+        "actualDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+        "matches": true
+      }
+    },
+    {
+      "control": "maven_checksum_strength",
+      "decision": "revision_manual",
+      "message": "Maven Central solo publicó SHA-1 para este artefacto; el checksum coincide, pero requiere revisión por su algoritmo débil.",
+      "evidence": {
+        "groupId": "org.slf4j",
+        "artifactId": "slf4j-api",
+        "version": "1.7.36",
+        "type": "jar",
+        "classifier": "",
+        "scope": "compile",
+        "source": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar",
+        "digestAlgorithm": "sha1",
+        "publishedDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+        "actualDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+        "matches": true
+      }
+    }
+  ],
+  "scope": "dependencias directas declaradas; no instala paquetes ni resuelve dependencias transitivas",
+  "ecosystem": "maven"
+}

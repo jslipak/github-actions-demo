@@ -1,0 +1,176 @@
+{
+  "project": "esenario/s6",
+  "policyVersion": "1.2.0",
+  "policySha256": "2ca191caee044247cbe4a18bb008438039c87f36ec6992cb130c1ac1f9952c9c",
+  "observedAt": "2026-11-11T01:24:08.800164+00:00",
+  "decision": "revision_manual",
+  "findings": [
+    {
+      "control": "maintenance_age",
+      "decision": "revision_manual",
+      "message": "La fecha del último release supera el umbral de mantenimiento de la política.",
+      "evidence": {
+        "package": "is-promise",
+        "declaredVersion": "4.0.0",
+        "latestReleaseAt": "2020-04-27T15:34:23.345000+00:00",
+        "ageDays": 2388,
+        "observedAt": "2026-11-11T01:24:08.717634+00:00",
+        "source": "https://registry.npmjs.org/is-promise",
+        "thresholdDays": 730
+      }
+    }
+  ],
+  "evidence": {
+    "project": "esenario/s6",
+    "policyVersion": "1.2.0",
+    "lockfile": {
+      "manifest": "esenario/s6/package.json",
+      "lock": "esenario/s6/package-lock.json",
+      "mismatches": {}
+    },
+    "resolvedUrls": [
+      {
+        "packagePath": "node_modules/is-promise",
+        "url": "https://registry.npmjs.org/is-promise/-/is-promise-4.0.0.tgz",
+        "host": "registry.npmjs.org"
+      }
+    ],
+    "lockfileLicenses": [
+      {
+        "packagePath": "node_modules/is-promise",
+        "version": "4.0.0",
+        "license": "MIT",
+        "source": "esenario/s6/package-lock.json"
+      }
+    ],
+    "lifecycleScripts": [],
+    "maintenance": {
+      "thresholdDays": 730,
+      "observedAt": "2026-11-11T01:24:08.717634+00:00",
+      "packages": [
+        {
+          "package": "is-promise",
+          "declaredVersion": "4.0.0",
+          "latestReleaseAt": "2020-04-27T15:34:23.345000+00:00",
+          "ageDays": 2388,
+          "observedAt": "2026-11-11T01:24:08.717634+00:00",
+          "source": "https://registry.npmjs.org/is-promise"
+        }
+      ],
+      "skipped": []
+    },
+    "npmIntegrity": {
+      "project": "esenario/s6",
+      "ecosystem": "npm",
+      "observedAt": "2026-11-11T01:23:20.631860+00:00",
+      "status": "passed",
+      "findings": [],
+      "preflight": {
+        "eligible": true,
+        "reasons": [],
+        "mismatches": {},
+        "unapprovedSources": [],
+        "localDependencies": [],
+        "registryDependencies": [
+          {
+            "packagePath": "node_modules/is-promise",
+            "url": "https://registry.npmjs.org/is-promise/-/is-promise-4.0.0.tgz"
+          }
+        ]
+      },
+      "npmVersion": "11.19.1",
+      "nodeVersion": "v24.22.2",
+      "install": {
+        "command": [
+          "npm",
+          "ci",
+          "--ignore-scripts",
+          "--no-audit",
+          "--no-fund",
+          "--registry=https://registry.npmjs.org/",
+          "--userconfig=<configuración temporal>"
+        ],
+        "exitCode": 0,
+        "scriptsIgnored": true,
+        "stdout": "\nadded 1 package in 274ms\n",
+        "stderr": ""
+      },
+      "lifecycleMarkerCheck": {
+        "checked": false,
+        "marker": "postinstall-marker.txt",
+        "createdOrChangedDuringInstall": [],
+        "scriptsIgnored": true
+      },
+      "signatureVerification": {
+        "command": [
+          "npm",
+          "audit",
+          "signatures",
+          "--json",
+          "--include-attestations"
+        ],
+        "summaryCommand": [
+          "npm",
+          "audit",
+          "signatures"
+        ],
+        "exitCode": 0,
+        "summaryExitCode": 0,
+        "registrySignatures": "verified",
+        "verifiedRegistrySignatureCount": 1,
+        "registryDependenciesExpected": 1,
+        "humanSummary": "audited 1 package in 0s\n\n1 package has a verified registry signature\n\n",
+        "invalid": [],
+        "missing": [],
+        "provenance": "no_attestation_reported",
+        "verifiedAttestations": [],
+        "localDependenciesNotRegistrySigned": [],
+        "summaryError": null,
+        "stderr": ""
+      }
+    },
+    "nonNpmIntegrity": {
+      "project": "esenario/s6",
+      "observedAt": "2026-11-11T01:23:32.010767+00:00",
+      "status": "not_applicable",
+      "directDependencies": [],
+      "findings": [],
+      "scope": "dependencias directas declaradas; no instala paquetes ni resuelve dependencias transitivas",
+      "reason": "Los proyectos npm se verifican con el control npm específico."
+    },
+    "sigstore": {
+      "project": "esenario/s6",
+      "observedAt": "2026-11-11T01:23:32.502384+00:00",
+      "status": "not_applicable",
+      "artifacts": [],
+      "findings": [],
+      "reason": "Los paquetes npm se verifican con npm audit signatures."
+    },
+    "compose": {
+      "project": "/home/runner/work/github-actions-demo/github-actions-demo/esenario/s6",
+      "observedAt": "2026-11-11T01:24:06.441097+00:00",
+      "status": "not_applicable",
+      "composeFile": null,
+      "images": [],
+      "imageScanReports": [],
+      "test": {
+        "status": "not_applicable",
+        "service": "test"
+      },
+      "findings": [],
+      "reason": "El escenario no contiene un archivo Docker Compose."
+    },
+    "trivy": {
+      "report": "reports/trivy-s6.json",
+      "schemaVersion": 2,
+      "vulnerabilities": [],
+      "licenses": [
+        {
+          "target": "package-lock.json",
+          "package": "is-promise",
+          "license": "MIT"
+        }
+      ]
+    }
+  }
+}

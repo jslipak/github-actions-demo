@@ -1,0 +1,36 @@
+{
+  "project": "esenario/s3",
+  "ecosystem": "npm",
+  "observedAt": "2026-11-11T01:23:18.782326+00:00",
+  "status": "skipped",
+  "findings": [],
+  "preflight": {
+    "eligible": false,
+    "reasons": [
+      "El manifiesto y el lockfile no concuerdan."
+    ],
+    "mismatches": {
+      "chalk": {
+        "manifest": "5.6.2",
+        "lock": "6.0.1"
+      }
+    },
+    "unapprovedSources": [],
+    "localDependencies": [],
+    "registryDependencies": [
+      {
+        "packagePath": "node_modules/chalk",
+        "url": "https://registry.npmjs.org/chalk/-/chalk-6.0.1.tgz"
+      },
+      {
+        "packagePath": "node_modules/dotenv",
+        "url": "https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz"
+      },
+      {
+        "packagePath": "node_modules/zod",
+        "url": "https://registry.npmjs.org/zod/-/zod-3.24.2.tgz"
+      }
+    ]
+  },
+  "reason": "Se omitió la instalación para no descargar desde fuentes no autorizadas ni resolver un lockfile inconsistente."
+}

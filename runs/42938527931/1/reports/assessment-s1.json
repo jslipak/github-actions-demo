@@ -1,0 +1,390 @@
+{
+  "project": "esenario/s1",
+  "policyVersion": "1.2.0",
+  "policySha256": "2ca191caee044247cbe4a18bb008438039c87f36ec6992cb130c1ac1f9952c9c",
+  "observedAt": "2026-11-11T01:24:06.681300+00:00",
+  "decision": "bloquear",
+  "findings": [
+    {
+      "control": "maven_checksum_strength",
+      "decision": "revision_manual",
+      "message": "Maven Central solo publicó SHA-1 para este artefacto; el checksum coincide, pero requiere revisión por su algoritmo débil.",
+      "evidence": {
+        "groupId": "org.apache.logging.log4j",
+        "artifactId": "log4j-core",
+        "version": "2.14.1",
+        "type": "jar",
+        "classifier": "",
+        "scope": "compile",
+        "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar",
+        "digestAlgorithm": "sha1",
+        "publishedDigest": "9141212b8507ab50a45525b545b39d224614528b",
+        "actualDigest": "9141212b8507ab50a45525b545b39d224614528b",
+        "matches": true
+      }
+    },
+    {
+      "control": "maven_checksum_strength",
+      "decision": "revision_manual",
+      "message": "Maven Central solo publicó SHA-1 para este artefacto; el checksum coincide, pero requiere revisión por su algoritmo débil.",
+      "evidence": {
+        "groupId": "org.apache.logging.log4j",
+        "artifactId": "log4j-api",
+        "version": "2.14.1",
+        "type": "jar",
+        "classifier": "",
+        "scope": "compile",
+        "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar",
+        "digestAlgorithm": "sha1",
+        "publishedDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+        "actualDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+        "matches": true
+      }
+    },
+    {
+      "control": "maven_checksum_strength",
+      "decision": "revision_manual",
+      "message": "Maven Central solo publicó SHA-1 para este artefacto; el checksum coincide, pero requiere revisión por su algoritmo débil.",
+      "evidence": {
+        "groupId": "org.slf4j",
+        "artifactId": "slf4j-api",
+        "version": "1.7.36",
+        "type": "jar",
+        "classifier": "",
+        "scope": "compile",
+        "source": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar",
+        "digestAlgorithm": "sha1",
+        "publishedDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+        "actualDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+        "matches": true
+      }
+    },
+    {
+      "control": "vulnerability",
+      "decision": "bloquear",
+      "message": "Vulnerabilidad sobre el umbral de bloqueo.",
+      "evidence": {
+        "target": "pom.xml",
+        "package": "org.apache.logging.log4j:log4j-core",
+        "installedVersion": "2.14.1",
+        "vulnerabilityId": "CVE-2021-44228",
+        "severity": "CRITICAL",
+        "cvss": 10.0
+      }
+    },
+    {
+      "control": "vulnerability",
+      "decision": "bloquear",
+      "message": "Vulnerabilidad sobre el umbral de bloqueo.",
+      "evidence": {
+        "target": "pom.xml",
+        "package": "org.apache.logging.log4j:log4j-core",
+        "installedVersion": "2.14.1",
+        "vulnerabilityId": "CVE-2021-45046",
+        "severity": "CRITICAL",
+        "cvss": 9.1
+      }
+    },
+    {
+      "control": "vulnerability",
+      "decision": "revision_manual",
+      "message": "Vulnerabilidad sobre el umbral de revisión.",
+      "evidence": {
+        "target": "pom.xml",
+        "package": "org.apache.logging.log4j:log4j-core",
+        "installedVersion": "2.14.1",
+        "vulnerabilityId": "CVE-2021-45105",
+        "severity": "HIGH",
+        "cvss": 8.6
+      }
+    },
+    {
+      "control": "vulnerability",
+      "decision": "revision_manual",
+      "message": "Vulnerabilidad sobre el umbral de revisión.",
+      "evidence": {
+        "target": "pom.xml",
+        "package": "org.apache.logging.log4j:log4j-core",
+        "installedVersion": "2.14.1",
+        "vulnerabilityId": "CVE-2026-34479",
+        "severity": "MEDIUM",
+        "cvss": 7.5
+      }
+    },
+    {
+      "control": "vulnerability",
+      "decision": "revision_manual",
+      "message": "Vulnerabilidad sobre el umbral de revisión.",
+      "evidence": {
+        "target": "pom.xml",
+        "package": "org.apache.logging.log4j:log4j-core",
+        "installedVersion": "2.14.1",
+        "vulnerabilityId": "CVE-2026-34480",
+        "severity": "MEDIUM",
+        "cvss": 7.5
+      }
+    }
+  ],
+  "evidence": {
+    "project": "esenario/s1",
+    "policyVersion": "1.2.0",
+    "npmIntegrity": {
+      "project": "esenario/s1",
+      "ecosystem": "npm",
+      "observedAt": "2026-11-11T01:23:18.647332+00:00",
+      "status": "not_applicable",
+      "findings": [],
+      "reason": "El escenario no es un proyecto npm con lockfile."
+    },
+    "nonNpmIntegrity": {
+      "project": "esenario/s1",
+      "observedAt": "2026-11-11T01:23:27.488705+00:00",
+      "status": "review",
+      "directDependencies": [
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-core",
+          "version": "2.14.1",
+          "type": "jar",
+          "classifier": "",
+          "scope": "compile",
+          "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar",
+          "digestAlgorithm": "sha1",
+          "publishedDigest": "9141212b8507ab50a45525b545b39d224614528b",
+          "actualDigest": "9141212b8507ab50a45525b545b39d224614528b",
+          "matches": true,
+          "sigstore": {
+            "status": "no_bundle_published",
+            "bundleUrl": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar.sigstore.json"
+          }
+        },
+        {
+          "groupId": "org.apache.logging.log4j",
+          "artifactId": "log4j-api",
+          "version": "2.14.1",
+          "type": "jar",
+          "classifier": "",
+          "scope": "compile",
+          "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar",
+          "digestAlgorithm": "sha1",
+          "publishedDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+          "actualDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+          "matches": true,
+          "sigstore": {
+            "status": "no_bundle_published",
+            "bundleUrl": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar.sigstore.json"
+          }
+        },
+        {
+          "groupId": "org.slf4j",
+          "artifactId": "slf4j-api",
+          "version": "1.7.36",
+          "type": "jar",
+          "classifier": "",
+          "scope": "compile",
+          "source": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar",
+          "digestAlgorithm": "sha1",
+          "publishedDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+          "actualDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+          "matches": true,
+          "sigstore": {
+            "status": "no_bundle_published",
+            "bundleUrl": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar.sigstore.json"
+          }
+        },
+        {
+          "groupId": "org.junit.jupiter",
+          "artifactId": "junit-jupiter",
+          "version": "5.10.2",
+          "type": "jar",
+          "classifier": "",
+          "scope": "test",
+          "source": "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar",
+          "digestAlgorithm": "sha512",
+          "publishedDigest": "d10edf43b62c5947b50c506e84d65829138970acd6a85c066d7c6ca192477bed197af77866f6b18ea7b8ebc8a1a16666dc7982a967533079e8927a65aa3b484d",
+          "actualDigest": "d10edf43b62c5947b50c506e84d65829138970acd6a85c066d7c6ca192477bed197af77866f6b18ea7b8ebc8a1a16666dc7982a967533079e8927a65aa3b484d",
+          "matches": true,
+          "sigstore": {
+            "status": "no_bundle_published",
+            "bundleUrl": "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar.sigstore.json"
+          }
+        }
+      ],
+      "findings": [
+        {
+          "control": "maven_checksum_strength",
+          "decision": "revision_manual",
+          "message": "Maven Central solo publicó SHA-1 para este artefacto; el checksum coincide, pero requiere revisión por su algoritmo débil.",
+          "evidence": {
+            "groupId": "org.apache.logging.log4j",
+            "artifactId": "log4j-core",
+            "version": "2.14.1",
+            "type": "jar",
+            "classifier": "",
+            "scope": "compile",
+            "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.14.1/log4j-core-2.14.1.jar",
+            "digestAlgorithm": "sha1",
+            "publishedDigest": "9141212b8507ab50a45525b545b39d224614528b",
+            "actualDigest": "9141212b8507ab50a45525b545b39d224614528b",
+            "matches": true
+          }
+        },
+        {
+          "control": "maven_checksum_strength",
+          "decision": "revision_manual",
+          "message": "Maven Central solo publicó SHA-1 para este artefacto; el checksum coincide, pero requiere revisión por su algoritmo débil.",
+          "evidence": {
+            "groupId": "org.apache.logging.log4j",
+            "artifactId": "log4j-api",
+            "version": "2.14.1",
+            "type": "jar",
+            "classifier": "",
+            "scope": "compile",
+            "source": "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar",
+            "digestAlgorithm": "sha1",
+            "publishedDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+            "actualDigest": "cd8858fbbde69f46bce8db1152c18a43328aae78",
+            "matches": true
+          }
+        },
+        {
+          "control": "maven_checksum_strength",
+          "decision": "revision_manual",
+          "message": "Maven Central solo publicó SHA-1 para este artefacto; el checksum coincide, pero requiere revisión por su algoritmo débil.",
+          "evidence": {
+            "groupId": "org.slf4j",
+            "artifactId": "slf4j-api",
+            "version": "1.7.36",
+            "type": "jar",
+            "classifier": "",
+            "scope": "compile",
+            "source": "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar",
+            "digestAlgorithm": "sha1",
+            "publishedDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+            "actualDigest": "6c62681a2f655b49963a5983b8b0950a6120ae14",
+            "matches": true
+          }
+        }
+      ],
+      "scope": "dependencias directas declaradas; no instala paquetes ni resuelve dependencias transitivas",
+      "ecosystem": "maven"
+    },
+    "sigstore": {
+      "project": "esenario/s1",
+      "observedAt": "2026-11-11T01:23:32.266348+00:00",
+      "status": "not_applicable",
+      "artifacts": [],
+      "findings": [],
+      "reason": "El escenario no versiona artefactos binarios para verificar con Cosign."
+    },
+    "compose": {
+      "project": "/home/runner/work/github-actions-demo/github-actions-demo/esenario/s1",
+      "observedAt": "2026-11-11T01:23:32.706814+00:00",
+      "status": "not_applicable",
+      "composeFile": null,
+      "images": [],
+      "imageScanReports": [],
+      "test": {
+        "status": "not_applicable",
+        "service": "test"
+      },
+      "findings": [],
+      "reason": "El escenario no contiene un archivo Docker Compose."
+    },
+    "trivy": {
+      "report": "reports/trivy-s1.json",
+      "schemaVersion": 2,
+      "vulnerabilities": [
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-api",
+          "installedVersion": "2.14.1",
+          "vulnerabilityId": "CVE-2026-49844",
+          "severity": "MEDIUM",
+          "cvss": 5.9
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-core",
+          "installedVersion": "2.14.1",
+          "vulnerabilityId": "CVE-2021-44228",
+          "severity": "CRITICAL",
+          "cvss": 10.0
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-core",
+          "installedVersion": "2.14.1",
+          "vulnerabilityId": "CVE-2021-45046",
+          "severity": "CRITICAL",
+          "cvss": 9.1
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-core",
+          "installedVersion": "2.14.1",
+          "vulnerabilityId": "CVE-2021-45105",
+          "severity": "HIGH",
+          "cvss": 8.6
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-core",
+          "installedVersion": "2.14.1",
+          "vulnerabilityId": "CVE-2021-44832",
+          "severity": "MEDIUM",
+          "cvss": 6.6
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-core",
+          "installedVersion": "2.14.1",
+          "vulnerabilityId": "CVE-2025-68161",
+          "severity": "MEDIUM",
+          "cvss": 5.9
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-core",
+          "installedVersion": "2.14.1",
+          "vulnerabilityId": "CVE-2026-34477",
+          "severity": "MEDIUM",
+          "cvss": 6.8
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-core",
+          "installedVersion": "2.14.1",
+          "vulnerabilityId": "CVE-2026-34479",
+          "severity": "MEDIUM",
+          "cvss": 7.5
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-core",
+          "installedVersion": "2.14.1",
+          "vulnerabilityId": "CVE-2026-34480",
+          "severity": "MEDIUM",
+          "cvss": 7.5
+        }
+      ],
+      "licenses": [
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-api",
+          "license": "Apache-2.0"
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.apache.logging.log4j:log4j-core",
+          "license": "Apache-2.0"
+        },
+        {
+          "target": "pom.xml",
+          "package": "org.slf4j:slf4j-api",
+          "license": "MIT"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "project": "esenario/s1",
+  "observedAt": "2026-11-11T01:23:32.266348+00:00",
+  "status": "not_applicable",
+  "artifacts": [],
+  "findings": [],
+  "reason": "El escenario no versiona artefactos binarios para verificar con Cosign."
+}

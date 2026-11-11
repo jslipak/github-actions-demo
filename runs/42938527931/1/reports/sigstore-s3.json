@@ -1,0 +1,8 @@
+{
+  "project": "esenario/s3",
+  "observedAt": "2026-11-11T01:23:32.379296+00:00",
+  "status": "not_applicable",
+  "artifacts": [],
+  "findings": [],
+  "reason": "Los paquetes npm se verifican con npm audit signatures."
+}

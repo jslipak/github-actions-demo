@@ -1,0 +1,624 @@
+{
+  "project": "esenario/s9",
+  "policyVersion": "1.2.0",
+  "policySha256": "2ca191caee044247cbe4a18bb008438039c87f36ec6992cb130c1ac1f9952c9c",
+  "observedAt": "2026-11-11T01:24:10.322496+00:00",
+  "decision": "bloquear",
+  "findings": [
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/atomic-sleep",
+        "url": "https://packages.example.invalid/atomic-sleep/-/atomic-sleep-1.0.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/dotenv",
+        "url": "https://packages.example.invalid/dotenv/-/dotenv-16.4.7.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/fast-redact",
+        "url": "https://packages.example.invalid/fast-redact/-/fast-redact-3.5.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/lodash",
+        "url": "https://packages.example.invalid/lodash/-/lodash-4.17.21.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/on-exit-leak-free",
+        "url": "https://packages.example.invalid/on-exit-leak-free/-/on-exit-leak-free-2.1.2.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/pino",
+        "url": "https://packages.example.invalid/pino/-/pino-9.6.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/pino-abstract-transport",
+        "url": "https://packages.example.invalid/pino-abstract-transport/-/pino-abstract-transport-2.0.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/pino-std-serializers",
+        "url": "https://packages.example.invalid/pino-std-serializers/-/pino-std-serializers-7.1.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/process-warning",
+        "url": "https://packages.example.invalid/process-warning/-/process-warning-4.0.1.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/quick-format-unescaped",
+        "url": "https://packages.example.invalid/quick-format-unescaped/-/quick-format-unescaped-4.0.4.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/real-require",
+        "url": "https://packages.example.invalid/real-require/-/real-require-0.2.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/safe-stable-stringify",
+        "url": "https://packages.example.invalid/safe-stable-stringify/-/safe-stable-stringify-2.5.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/sonic-boom",
+        "url": "https://packages.example.invalid/sonic-boom/-/sonic-boom-4.2.1.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/split2",
+        "url": "https://packages.example.invalid/split2/-/split2-4.2.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/thread-stream",
+        "url": "https://packages.example.invalid/thread-stream/-/thread-stream-3.2.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "La configuración npm apunta a un registro no autorizado.",
+      "evidence": {
+        "file": "esenario/s9/.npmrc",
+        "key": "registry",
+        "registry": "https://packages.example.invalid/"
+      }
+    },
+    {
+      "control": "vulnerability",
+      "decision": "bloquear",
+      "message": "Vulnerabilidad sobre el umbral de bloqueo.",
+      "evidence": {
+        "target": "package-lock.json",
+        "package": "lodash",
+        "installedVersion": "4.17.21",
+        "vulnerabilityId": "CVE-2026-4800",
+        "severity": "HIGH",
+        "cvss": 9.8
+      }
+    },
+    {
+      "control": "vulnerability",
+      "decision": "revision_manual",
+      "message": "Vulnerabilidad sobre el umbral de revisión.",
+      "evidence": {
+        "target": "package-lock.json",
+        "package": "lodash",
+        "installedVersion": "4.17.21",
+        "vulnerabilityId": "CVE-2025-13465",
+        "severity": "MEDIUM",
+        "cvss": 8.2
+      }
+    }
+  ],
+  "evidence": {
+    "project": "esenario/s9",
+    "policyVersion": "1.2.0",
+    "lockfile": {
+      "manifest": "esenario/s9/package.json",
+      "lock": "esenario/s9/package-lock.json",
+      "mismatches": {}
+    },
+    "resolvedUrls": [
+      {
+        "packagePath": "node_modules/atomic-sleep",
+        "url": "https://packages.example.invalid/atomic-sleep/-/atomic-sleep-1.0.0.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/dotenv",
+        "url": "https://packages.example.invalid/dotenv/-/dotenv-16.4.7.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/fast-redact",
+        "url": "https://packages.example.invalid/fast-redact/-/fast-redact-3.5.0.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/lodash",
+        "url": "https://packages.example.invalid/lodash/-/lodash-4.17.21.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/on-exit-leak-free",
+        "url": "https://packages.example.invalid/on-exit-leak-free/-/on-exit-leak-free-2.1.2.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/pino",
+        "url": "https://packages.example.invalid/pino/-/pino-9.6.0.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/pino-abstract-transport",
+        "url": "https://packages.example.invalid/pino-abstract-transport/-/pino-abstract-transport-2.0.0.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/pino-std-serializers",
+        "url": "https://packages.example.invalid/pino-std-serializers/-/pino-std-serializers-7.1.0.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/process-warning",
+        "url": "https://packages.example.invalid/process-warning/-/process-warning-4.0.1.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/quick-format-unescaped",
+        "url": "https://packages.example.invalid/quick-format-unescaped/-/quick-format-unescaped-4.0.4.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/real-require",
+        "url": "https://packages.example.invalid/real-require/-/real-require-0.2.0.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/safe-stable-stringify",
+        "url": "https://packages.example.invalid/safe-stable-stringify/-/safe-stable-stringify-2.5.0.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/sonic-boom",
+        "url": "https://packages.example.invalid/sonic-boom/-/sonic-boom-4.2.1.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/split2",
+        "url": "https://packages.example.invalid/split2/-/split2-4.2.0.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/thread-stream",
+        "url": "https://packages.example.invalid/thread-stream/-/thread-stream-3.2.0.tgz",
+        "host": "packages.example.invalid"
+      }
+    ],
+    "lockfileLicenses": [
+      {
+        "packagePath": "node_modules/atomic-sleep",
+        "version": "1.0.0",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/dotenv",
+        "version": "16.4.7",
+        "license": "BSD-2-Clause",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/fast-redact",
+        "version": "3.5.0",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/lodash",
+        "version": "4.17.21",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/on-exit-leak-free",
+        "version": "2.1.2",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/pino",
+        "version": "9.6.0",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/pino-abstract-transport",
+        "version": "2.0.0",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/pino-std-serializers",
+        "version": "7.1.0",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/process-warning",
+        "version": "4.0.1",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/quick-format-unescaped",
+        "version": "4.0.4",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/real-require",
+        "version": "0.2.0",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/safe-stable-stringify",
+        "version": "2.5.0",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/sonic-boom",
+        "version": "4.2.1",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/split2",
+        "version": "4.2.0",
+        "license": "ISC",
+        "source": "esenario/s9/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/thread-stream",
+        "version": "3.2.0",
+        "license": "MIT",
+        "source": "esenario/s9/package-lock.json"
+      }
+    ],
+    "npmrc": {
+      "file": "esenario/s9/.npmrc",
+      "registries": [
+        "https://packages.example.invalid/"
+      ]
+    },
+    "lifecycleScripts": [],
+    "maintenance": {
+      "thresholdDays": 730,
+      "observedAt": "2026-11-11T01:24:09.999382+00:00",
+      "packages": [
+        {
+          "package": "dotenv",
+          "declaredVersion": "16.4.7",
+          "latestReleaseAt": "2026-11-09T00:53:33.379000+00:00",
+          "ageDays": 2,
+          "observedAt": "2026-11-11T01:24:09.999382+00:00",
+          "source": "https://registry.npmjs.org/dotenv"
+        },
+        {
+          "package": "lodash",
+          "declaredVersion": "4.17.21",
+          "latestReleaseAt": "2026-04-01T21:01:20.458000+00:00",
+          "ageDays": 223,
+          "observedAt": "2026-11-11T01:24:09.999382+00:00",
+          "source": "https://registry.npmjs.org/lodash"
+        },
+        {
+          "package": "pino",
+          "declaredVersion": "9.6.0",
+          "latestReleaseAt": "2026-10-02T18:18:54.863000+00:00",
+          "ageDays": 39,
+          "observedAt": "2026-11-11T01:24:09.999382+00:00",
+          "source": "https://registry.npmjs.org/pino"
+        }
+      ],
+      "skipped": []
+    },
+    "npmIntegrity": {
+      "project": "esenario/s9",
+      "ecosystem": "npm",
+      "observedAt": "2026-11-11T01:23:25.572588+00:00",
+      "status": "skipped",
+      "findings": [],
+      "preflight": {
+        "eligible": false,
+        "reasons": [
+          "El escenario contiene un registro o una URL de resolución no autorizados."
+        ],
+        "mismatches": {},
+        "unapprovedSources": [
+          {
+            "packagePath": "node_modules/atomic-sleep",
+            "url": "https://packages.example.invalid/atomic-sleep/-/atomic-sleep-1.0.0.tgz"
+          },
+          {
+            "packagePath": "node_modules/dotenv",
+            "url": "https://packages.example.invalid/dotenv/-/dotenv-16.4.7.tgz"
+          },
+          {
+            "packagePath": "node_modules/fast-redact",
+            "url": "https://packages.example.invalid/fast-redact/-/fast-redact-3.5.0.tgz"
+          },
+          {
+            "packagePath": "node_modules/lodash",
+            "url": "https://packages.example.invalid/lodash/-/lodash-4.17.21.tgz"
+          },
+          {
+            "packagePath": "node_modules/on-exit-leak-free",
+            "url": "https://packages.example.invalid/on-exit-leak-free/-/on-exit-leak-free-2.1.2.tgz"
+          },
+          {
+            "packagePath": "node_modules/pino",
+            "url": "https://packages.example.invalid/pino/-/pino-9.6.0.tgz"
+          },
+          {
+            "packagePath": "node_modules/pino-abstract-transport",
+            "url": "https://packages.example.invalid/pino-abstract-transport/-/pino-abstract-transport-2.0.0.tgz"
+          },
+          {
+            "packagePath": "node_modules/pino-std-serializers",
+            "url": "https://packages.example.invalid/pino-std-serializers/-/pino-std-serializers-7.1.0.tgz"
+          },
+          {
+            "packagePath": "node_modules/process-warning",
+            "url": "https://packages.example.invalid/process-warning/-/process-warning-4.0.1.tgz"
+          },
+          {
+            "packagePath": "node_modules/quick-format-unescaped",
+            "url": "https://packages.example.invalid/quick-format-unescaped/-/quick-format-unescaped-4.0.4.tgz"
+          },
+          {
+            "packagePath": "node_modules/real-require",
+            "url": "https://packages.example.invalid/real-require/-/real-require-0.2.0.tgz"
+          },
+          {
+            "packagePath": "node_modules/safe-stable-stringify",
+            "url": "https://packages.example.invalid/safe-stable-stringify/-/safe-stable-stringify-2.5.0.tgz"
+          },
+          {
+            "packagePath": "node_modules/sonic-boom",
+            "url": "https://packages.example.invalid/sonic-boom/-/sonic-boom-4.2.1.tgz"
+          },
+          {
+            "packagePath": "node_modules/split2",
+            "url": "https://packages.example.invalid/split2/-/split2-4.2.0.tgz"
+          },
+          {
+            "packagePath": "node_modules/thread-stream",
+            "url": "https://packages.example.invalid/thread-stream/-/thread-stream-3.2.0.tgz"
+          },
+          {
+            "packagePath": ".npmrc:1",
+            "url": "https://packages.example.invalid/"
+          }
+        ],
+        "localDependencies": [],
+        "registryDependencies": []
+      },
+      "reason": "Se omitió la instalación para no descargar desde fuentes no autorizadas ni resolver un lockfile inconsistente."
+    },
+    "nonNpmIntegrity": {
+      "project": "esenario/s9",
+      "observedAt": "2026-11-11T01:23:32.176244+00:00",
+      "status": "not_applicable",
+      "directDependencies": [],
+      "findings": [],
+      "scope": "dependencias directas declaradas; no instala paquetes ni resuelve dependencias transitivas",
+      "reason": "Los proyectos npm se verifican con el control npm específico."
+    },
+    "sigstore": {
+      "project": "esenario/s9",
+      "observedAt": "2026-11-11T01:23:32.618784+00:00",
+      "status": "not_applicable",
+      "artifacts": [],
+      "findings": [],
+      "reason": "Los paquetes npm se verifican con npm audit signatures."
+    },
+    "compose": {
+      "project": "/home/runner/work/github-actions-demo/github-actions-demo/esenario/s9",
+      "observedAt": "2026-11-11T01:24:06.562021+00:00",
+      "status": "not_applicable",
+      "composeFile": null,
+      "images": [],
+      "imageScanReports": [],
+      "test": {
+        "status": "not_applicable",
+        "service": "test"
+      },
+      "findings": [],
+      "reason": "El escenario no contiene un archivo Docker Compose."
+    },
+    "trivy": {
+      "report": "reports/trivy-s9.json",
+      "schemaVersion": 2,
+      "vulnerabilities": [
+        {
+          "target": "package-lock.json",
+          "package": "lodash",
+          "installedVersion": "4.17.21",
+          "vulnerabilityId": "CVE-2026-4800",
+          "severity": "HIGH",
+          "cvss": 9.8
+        },
+        {
+          "target": "package-lock.json",
+          "package": "lodash",
+          "installedVersion": "4.17.21",
+          "vulnerabilityId": "CVE-2025-13465",
+          "severity": "MEDIUM",
+          "cvss": 8.2
+        }
+      ],
+      "licenses": [
+        {
+          "target": "package-lock.json",
+          "package": "dotenv",
+          "license": "BSD-2-Clause"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "lodash",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "pino",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "atomic-sleep",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "fast-redact",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "on-exit-leak-free",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "pino-abstract-transport",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "pino-std-serializers",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "process-warning",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "quick-format-unescaped",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "real-require",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "safe-stable-stringify",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "sonic-boom",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "split2",
+          "license": "ISC"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "thread-stream",
+          "license": "MIT"
+        }
+      ]
+    }
+  }
+}

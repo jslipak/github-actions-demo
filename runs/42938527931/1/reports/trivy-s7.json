@@ -1,0 +1,115 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.2"
+  },
+  "ReportID": "01a1c833-c35d-727e-b837-767084d1e75f",
+  "CreatedAt": "2026-11-11T01:23:17.981164757Z",
+  "ArtifactName": "/workspace/esenario/s7",
+  "ArtifactType": "filesystem",
+  "Results": [
+    {
+      "Target": "package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Packages": [
+        {
+          "ID": "@substrate/connect-known-chains@1.10.3",
+          "Name": "@substrate/connect-known-chains",
+          "Identifier": {
+            "PURL": "pkg:npm/%40substrate/connect-known-chains@1.10.3",
+            "UID": "8fafc00b8cbee63f"
+          },
+          "Version": "1.10.3",
+          "Licenses": [
+            "GPL-3.0-only"
+          ],
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 16,
+              "EndLine": 21
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "dotenv@16.4.7",
+          "Name": "dotenv",
+          "Identifier": {
+            "PURL": "pkg:npm/dotenv@16.4.7",
+            "UID": "778fe5fa74f7dafd"
+          },
+          "Version": "16.4.7",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 22,
+              "EndLine": 33
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "zod@3.24.2",
+          "Name": "zod",
+          "Identifier": {
+            "PURL": "pkg:npm/zod@3.24.2",
+            "UID": "c96a3b0da232b1ad"
+          },
+          "Version": "3.24.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 34,
+              "EndLine": 42
+            }
+          ],
+          "AnalyzedBy": "npm"
+        }
+      ]
+    },
+    {
+      "Target": "package-lock.json",
+      "Class": "license",
+      "Licenses": [
+        {
+          "Severity": "HIGH",
+          "Category": "restricted",
+          "PkgName": "@substrate/connect-known-chains",
+          "FilePath": "package-lock.json",
+          "Name": "GPL-3.0-only",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "dotenv",
+          "FilePath": "package-lock.json",
+          "Name": "BSD-2-Clause",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "zod",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        }
+      ]
+    }
+  ]
+}

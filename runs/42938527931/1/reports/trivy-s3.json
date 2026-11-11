@@ -1,0 +1,115 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.2"
+  },
+  "ReportID": "01a1c833-bf96-7deb-be6d-9bf4eef9542e",
+  "CreatedAt": "2026-11-11T01:23:17.014913175Z",
+  "ArtifactName": "/workspace/esenario/s3",
+  "ArtifactType": "filesystem",
+  "Results": [
+    {
+      "Target": "package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Packages": [
+        {
+          "ID": "chalk@6.0.1",
+          "Name": "chalk",
+          "Identifier": {
+            "PURL": "pkg:npm/chalk@6.0.1",
+            "UID": "dce758ba28393dac"
+          },
+          "Version": "6.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 16,
+              "EndLine": 27
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "dotenv@16.4.7",
+          "Name": "dotenv",
+          "Identifier": {
+            "PURL": "pkg:npm/dotenv@16.4.7",
+            "UID": "52c2aee076aeca43"
+          },
+          "Version": "16.4.7",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 28,
+              "EndLine": 39
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "zod@3.24.2",
+          "Name": "zod",
+          "Identifier": {
+            "PURL": "pkg:npm/zod@3.24.2",
+            "UID": "a1a7ce701331e91e"
+          },
+          "Version": "3.24.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 40,
+              "EndLine": 48
+            }
+          ],
+          "AnalyzedBy": "npm"
+        }
+      ]
+    },
+    {
+      "Target": "package-lock.json",
+      "Class": "license",
+      "Licenses": [
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "chalk",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "dotenv",
+          "FilePath": "package-lock.json",
+          "Name": "BSD-2-Clause",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "zod",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        }
+      ]
+    }
+  ]
+}

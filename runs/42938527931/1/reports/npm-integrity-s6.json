@@ -1,0 +1,70 @@
+{
+  "project": "esenario/s6",
+  "ecosystem": "npm",
+  "observedAt": "2026-11-11T01:23:20.631860+00:00",
+  "status": "passed",
+  "findings": [],
+  "preflight": {
+    "eligible": true,
+    "reasons": [],
+    "mismatches": {},
+    "unapprovedSources": [],
+    "localDependencies": [],
+    "registryDependencies": [
+      {
+        "packagePath": "node_modules/is-promise",
+        "url": "https://registry.npmjs.org/is-promise/-/is-promise-4.0.0.tgz"
+      }
+    ]
+  },
+  "npmVersion": "11.19.1",
+  "nodeVersion": "v24.22.2",
+  "install": {
+    "command": [
+      "npm",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "--registry=https://registry.npmjs.org/",
+      "--userconfig=<configuración temporal>"
+    ],
+    "exitCode": 0,
+    "scriptsIgnored": true,
+    "stdout": "\nadded 1 package in 274ms\n",
+    "stderr": ""
+  },
+  "lifecycleMarkerCheck": {
+    "checked": false,
+    "marker": "postinstall-marker.txt",
+    "createdOrChangedDuringInstall": [],
+    "scriptsIgnored": true
+  },
+  "signatureVerification": {
+    "command": [
+      "npm",
+      "audit",
+      "signatures",
+      "--json",
+      "--include-attestations"
+    ],
+    "summaryCommand": [
+      "npm",
+      "audit",
+      "signatures"
+    ],
+    "exitCode": 0,
+    "summaryExitCode": 0,
+    "registrySignatures": "verified",
+    "verifiedRegistrySignatureCount": 1,
+    "registryDependenciesExpected": 1,
+    "humanSummary": "audited 1 package in 0s\n\n1 package has a verified registry signature\n\n",
+    "invalid": [],
+    "missing": [],
+    "provenance": "no_attestation_reported",
+    "verifiedAttestations": [],
+    "localDependenciesNotRegistrySigned": [],
+    "summaryError": null,
+    "stderr": ""
+  }
+}

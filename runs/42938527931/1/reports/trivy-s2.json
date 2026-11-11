@@ -1,0 +1,509 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.2"
+  },
+  "ReportID": "01a1c833-bea4-7bcd-9a94-36a66d772e7e",
+  "CreatedAt": "2026-11-11T01:23:16.772774432Z",
+  "ArtifactName": "/workspace/esenario/s2",
+  "ArtifactType": "filesystem",
+  "Results": [
+    {
+      "Target": "package-lock.json",
+      "Class": "lang-pkgs",
+      "Type": "npm",
+      "Packages": [
+        {
+          "ID": "chalk@6.0.1",
+          "Name": "chalk",
+          "Identifier": {
+            "PURL": "pkg:npm/chalk@6.0.1",
+            "UID": "547d7b9c986a0a91"
+          },
+          "Version": "6.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 25,
+              "EndLine": 36
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "dotenv@16.4.7",
+          "Name": "dotenv",
+          "Identifier": {
+            "PURL": "pkg:npm/dotenv@16.4.7",
+            "UID": "a3c29dc0950c2a2"
+          },
+          "Version": "16.4.7",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Relationship": "direct",
+          "Locations": [
+            {
+              "StartLine": 37,
+              "EndLine": 48
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pino@9.6.0",
+          "Name": "pino",
+          "Identifier": {
+            "PURL": "pkg:npm/pino@9.6.0",
+            "UID": "c259af007205da02"
+          },
+          "Version": "9.6.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Relationship": "direct",
+          "DependsOn": [
+            "atomic-sleep@1.0.0",
+            "fast-redact@3.5.0",
+            "on-exit-leak-free@2.1.2",
+            "pino-abstract-transport@2.0.0",
+            "pino-std-serializers@7.1.0",
+            "process-warning@4.0.1",
+            "quick-format-unescaped@4.0.4",
+            "real-require@0.2.0",
+            "safe-stable-stringify@2.5.0",
+            "sonic-boom@4.2.1",
+            "thread-stream@3.2.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 67,
+              "EndLine": 88
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "atomic-sleep@1.0.0",
+          "Name": "atomic-sleep",
+          "Identifier": {
+            "PURL": "pkg:npm/atomic-sleep@1.0.0",
+            "UID": "1d8227eb2033aec4"
+          },
+          "Version": "1.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 16,
+              "EndLine": 24
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "fast-redact@3.5.0",
+          "Name": "fast-redact",
+          "Identifier": {
+            "PURL": "pkg:npm/fast-redact@3.5.0",
+            "UID": "840b24e42d09d324"
+          },
+          "Version": "3.5.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 49,
+              "EndLine": 57
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "on-exit-leak-free@2.1.2",
+          "Name": "on-exit-leak-free",
+          "Identifier": {
+            "PURL": "pkg:npm/on-exit-leak-free@2.1.2",
+            "UID": "8bab9ebeb1fcc21c"
+          },
+          "Version": "2.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 58,
+              "EndLine": 66
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pino-abstract-transport@2.0.0",
+          "Name": "pino-abstract-transport",
+          "Identifier": {
+            "PURL": "pkg:npm/pino-abstract-transport@2.0.0",
+            "UID": "ceb0cb5f5558e75d"
+          },
+          "Version": "2.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "split2@4.2.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 89,
+              "EndLine": 97
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "pino-std-serializers@7.1.0",
+          "Name": "pino-std-serializers",
+          "Identifier": {
+            "PURL": "pkg:npm/pino-std-serializers@7.1.0",
+            "UID": "ac59d59ae5f1f210"
+          },
+          "Version": "7.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 98,
+              "EndLine": 103
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "process-warning@4.0.1",
+          "Name": "process-warning",
+          "Identifier": {
+            "PURL": "pkg:npm/process-warning@4.0.1",
+            "UID": "526b3a39d90bac19"
+          },
+          "Version": "4.0.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 104,
+              "EndLine": 119
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "quick-format-unescaped@4.0.4",
+          "Name": "quick-format-unescaped",
+          "Identifier": {
+            "PURL": "pkg:npm/quick-format-unescaped@4.0.4",
+            "UID": "7a882e4d09bcbfb0"
+          },
+          "Version": "4.0.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 120,
+              "EndLine": 125
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "real-require@0.2.0",
+          "Name": "real-require",
+          "Identifier": {
+            "PURL": "pkg:npm/real-require@0.2.0",
+            "UID": "ebcc518ddbd41540"
+          },
+          "Version": "0.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 126,
+              "EndLine": 134
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "safe-stable-stringify@2.5.0",
+          "Name": "safe-stable-stringify",
+          "Identifier": {
+            "PURL": "pkg:npm/safe-stable-stringify@2.5.0",
+            "UID": "d84da428059f33df"
+          },
+          "Version": "2.5.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 135,
+              "EndLine": 143
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "sonic-boom@4.2.1",
+          "Name": "sonic-boom",
+          "Identifier": {
+            "PURL": "pkg:npm/sonic-boom@4.2.1",
+            "UID": "6c06597a069edffd"
+          },
+          "Version": "4.2.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "atomic-sleep@1.0.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 144,
+              "EndLine": 152
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "split2@4.2.0",
+          "Name": "split2",
+          "Identifier": {
+            "PURL": "pkg:npm/split2@4.2.0",
+            "UID": "57bc9828b62bcbd0"
+          },
+          "Version": "4.2.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "Locations": [
+            {
+              "StartLine": 153,
+              "EndLine": 161
+            }
+          ],
+          "AnalyzedBy": "npm"
+        },
+        {
+          "ID": "thread-stream@3.2.0",
+          "Name": "thread-stream",
+          "Identifier": {
+            "PURL": "pkg:npm/thread-stream@3.2.0",
+            "UID": "eb83d50281a8d762"
+          },
+          "Version": "3.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "real-require@0.2.0"
+          ],
+          "Locations": [
+            {
+              "StartLine": 162,
+              "EndLine": 170
+            }
+          ],
+          "AnalyzedBy": "npm"
+        }
+      ]
+    },
+    {
+      "Target": "package-lock.json",
+      "Class": "license",
+      "Licenses": [
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "chalk",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "dotenv",
+          "FilePath": "package-lock.json",
+          "Name": "BSD-2-Clause",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "pino",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "atomic-sleep",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "fast-redact",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "on-exit-leak-free",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "pino-abstract-transport",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "pino-std-serializers",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "process-warning",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "quick-format-unescaped",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "real-require",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "safe-stable-stringify",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "sonic-boom",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "split2",
+          "FilePath": "package-lock.json",
+          "Name": "ISC",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        },
+        {
+          "Severity": "LOW",
+          "Category": "notice",
+          "PkgName": "thread-stream",
+          "FilePath": "package-lock.json",
+          "Name": "MIT",
+          "Text": "",
+          "Confidence": 1,
+          "Link": ""
+        }
+      ]
+    }
+  ]
+}

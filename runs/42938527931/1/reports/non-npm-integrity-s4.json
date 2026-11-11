@@ -1,0 +1,9 @@
+{
+  "project": "esenario/s4",
+  "observedAt": "2026-11-11T01:23:31.901864+00:00",
+  "status": "not_applicable",
+  "directDependencies": [],
+  "findings": [],
+  "scope": "dependencias directas declaradas; no instala paquetes ni resuelve dependencias transitivas",
+  "reason": "Los proyectos npm se verifican con el control npm específico."
+}

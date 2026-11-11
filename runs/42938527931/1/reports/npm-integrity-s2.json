@@ -1,0 +1,83 @@
+{
+  "project": "esenario/s2",
+  "ecosystem": "npm",
+  "observedAt": "2026-11-11T01:23:18.737667+00:00",
+  "status": "skipped",
+  "findings": [],
+  "preflight": {
+    "eligible": false,
+    "reasons": [
+      "El escenario contiene un registro o una URL de resolución no autorizados."
+    ],
+    "mismatches": {},
+    "unapprovedSources": [
+      {
+        "packagePath": "node_modules/atomic-sleep",
+        "url": "https://packages.example.invalid/atomic-sleep/-/atomic-sleep-1.0.0.tgz"
+      },
+      {
+        "packagePath": "node_modules/chalk",
+        "url": "https://packages.example.invalid/chalk/-/chalk-6.0.1.tgz"
+      },
+      {
+        "packagePath": "node_modules/dotenv",
+        "url": "https://packages.example.invalid/dotenv/-/dotenv-16.4.7.tgz"
+      },
+      {
+        "packagePath": "node_modules/fast-redact",
+        "url": "https://packages.example.invalid/fast-redact/-/fast-redact-3.5.0.tgz"
+      },
+      {
+        "packagePath": "node_modules/on-exit-leak-free",
+        "url": "https://packages.example.invalid/on-exit-leak-free/-/on-exit-leak-free-2.1.2.tgz"
+      },
+      {
+        "packagePath": "node_modules/pino",
+        "url": "https://packages.example.invalid/pino/-/pino-9.6.0.tgz"
+      },
+      {
+        "packagePath": "node_modules/pino-abstract-transport",
+        "url": "https://packages.example.invalid/pino-abstract-transport/-/pino-abstract-transport-2.0.0.tgz"
+      },
+      {
+        "packagePath": "node_modules/pino-std-serializers",
+        "url": "https://packages.example.invalid/pino-std-serializers/-/pino-std-serializers-7.1.0.tgz"
+      },
+      {
+        "packagePath": "node_modules/process-warning",
+        "url": "https://packages.example.invalid/process-warning/-/process-warning-4.0.1.tgz"
+      },
+      {
+        "packagePath": "node_modules/quick-format-unescaped",
+        "url": "https://packages.example.invalid/quick-format-unescaped/-/quick-format-unescaped-4.0.4.tgz"
+      },
+      {
+        "packagePath": "node_modules/real-require",
+        "url": "https://packages.example.invalid/real-require/-/real-require-0.2.0.tgz"
+      },
+      {
+        "packagePath": "node_modules/safe-stable-stringify",
+        "url": "https://packages.example.invalid/safe-stable-stringify/-/safe-stable-stringify-2.5.0.tgz"
+      },
+      {
+        "packagePath": "node_modules/sonic-boom",
+        "url": "https://packages.example.invalid/sonic-boom/-/sonic-boom-4.2.1.tgz"
+      },
+      {
+        "packagePath": "node_modules/split2",
+        "url": "https://packages.example.invalid/split2/-/split2-4.2.0.tgz"
+      },
+      {
+        "packagePath": "node_modules/thread-stream",
+        "url": "https://packages.example.invalid/thread-stream/-/thread-stream-3.2.0.tgz"
+      },
+      {
+        "packagePath": ".npmrc:1",
+        "url": "https://packages.example.invalid/"
+      }
+    ],
+    "localDependencies": [],
+    "registryDependencies": []
+  },
+  "reason": "Se omitió la instalación para no descargar desde fuentes no autorizadas ni resolver un lockfile inconsistente."
+}

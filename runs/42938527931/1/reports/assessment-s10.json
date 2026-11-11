@@ -1,0 +1,260 @@
+{
+  "project": "esenario/s10",
+  "policyVersion": "1.2.0",
+  "policySha256": "2ca191caee044247cbe4a18bb008438039c87f36ec6992cb130c1ac1f9952c9c",
+  "observedAt": "2026-11-11T01:24:06.733347+00:00",
+  "decision": "bloquear",
+  "findings": [
+    {
+      "control": "container_os_vulnerability",
+      "decision": "bloquear",
+      "message": "Trivy detectó una vulnerabilidad bloqueante en un paquete del sistema operativo de la imagen.",
+      "evidence": {
+        "image": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b",
+        "target": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b (alpine 3.23.6)",
+        "packageType": "alpine",
+        "packageClass": "os-pkgs",
+        "package": "musl",
+        "installedVersion": "1.2.5-r23",
+        "fixedVersion": "1.2.5-r24",
+        "vulnerabilityId": "CVE-2026-107891",
+        "severity": "HIGH",
+        "cvss": 8.1
+      }
+    },
+    {
+      "control": "container_os_vulnerability",
+      "decision": "bloquear",
+      "message": "Trivy detectó una vulnerabilidad bloqueante en un paquete del sistema operativo de la imagen.",
+      "evidence": {
+        "image": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b",
+        "target": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b (alpine 3.23.6)",
+        "packageType": "alpine",
+        "packageClass": "os-pkgs",
+        "package": "musl-utils",
+        "installedVersion": "1.2.5-r23",
+        "fixedVersion": "1.2.5-r24",
+        "vulnerabilityId": "CVE-2026-107891",
+        "severity": "HIGH",
+        "cvss": 8.1
+      }
+    },
+    {
+      "control": "container_os_vulnerability",
+      "decision": "bloquear",
+      "message": "Trivy detectó una vulnerabilidad bloqueante en un paquete del sistema operativo de la imagen.",
+      "evidence": {
+        "image": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b",
+        "target": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b (alpine 3.23.6)",
+        "packageType": "alpine",
+        "packageClass": "os-pkgs",
+        "package": "zlib",
+        "installedVersion": "1.3.2-r0",
+        "fixedVersion": "1.3.2-r1",
+        "vulnerabilityId": "CVE-2026-85091",
+        "severity": "HIGH",
+        "cvss": 8.1
+      }
+    },
+    {
+      "control": "container_os_vulnerability",
+      "decision": "revision_manual",
+      "message": "Trivy detectó una vulnerabilidad para revisión en un paquete del sistema operativo de la imagen.",
+      "evidence": {
+        "image": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b",
+        "target": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b (alpine 3.23.6)",
+        "packageType": "alpine",
+        "packageClass": "os-pkgs",
+        "package": "zlib",
+        "installedVersion": "1.3.2-r0",
+        "fixedVersion": "1.4-r0",
+        "vulnerabilityId": "CVE-2026-4738",
+        "severity": "MEDIUM",
+        "cvss": 0.0
+      }
+    }
+  ],
+  "evidence": {
+    "project": "esenario/s10",
+    "policyVersion": "1.2.0",
+    "npmIntegrity": {
+      "project": "esenario/s10",
+      "ecosystem": "npm",
+      "observedAt": "2026-11-11T01:23:18.693044+00:00",
+      "status": "not_applicable",
+      "findings": [],
+      "reason": "El escenario no es un proyecto npm con lockfile."
+    },
+    "nonNpmIntegrity": {
+      "project": "esenario/s10",
+      "observedAt": "2026-11-11T01:23:29.537087+00:00",
+      "status": "passed",
+      "directDependencies": [
+        {
+          "package": "bootsnap",
+          "version": "1.26.1",
+          "platform": "ruby",
+          "lockRequirement": "",
+          "satisfiesLockRequirement": true,
+          "source": "https://rubygems.org/downloads/bootsnap-1.26.1.gem",
+          "digestAlgorithm": "sha256",
+          "publishedDigest": "5b5bd90f8f13ea338627c1d56ffbe2ea25e743ac48c2afec1a9bea3a06a264e2",
+          "actualDigest": "5b5bd90f8f13ea338627c1d56ffbe2ea25e743ac48c2afec1a9bea3a06a264e2",
+          "matches": true,
+          "sigstore": {
+            "status": "no_bundle_published",
+            "bundleUrl": "https://rubygems.org/downloads/bootsnap-1.26.1.gem.sigstore.json"
+          }
+        },
+        {
+          "package": "puma",
+          "version": "8.0.2",
+          "platform": "ruby",
+          "lockRequirement": "~> 8.0",
+          "satisfiesLockRequirement": true,
+          "source": "https://rubygems.org/downloads/puma-8.0.2.gem",
+          "digestAlgorithm": "sha256",
+          "publishedDigest": "c8ed871dfbbe66448ea9ffd46692342d9804d4071522b52b5331b7b6e7b686fb",
+          "actualDigest": "c8ed871dfbbe66448ea9ffd46692342d9804d4071522b52b5331b7b6e7b686fb",
+          "matches": true,
+          "sigstore": {
+            "status": "no_bundle_published",
+            "bundleUrl": "https://rubygems.org/downloads/puma-8.0.2.gem.sigstore.json"
+          }
+        },
+        {
+          "package": "rails",
+          "version": "8.1.4.1",
+          "platform": "ruby",
+          "lockRequirement": "= 8.1.4.1",
+          "satisfiesLockRequirement": true,
+          "source": "https://rubygems.org/downloads/rails-8.1.4.1.gem",
+          "digestAlgorithm": "sha256",
+          "publishedDigest": "365c3a0ad2713bd6e60628e5e826622d4ca8dee60b5a7e560e9b20844e9650bc",
+          "actualDigest": "365c3a0ad2713bd6e60628e5e826622d4ca8dee60b5a7e560e9b20844e9650bc",
+          "matches": true,
+          "sigstore": {
+            "status": "no_bundle_published",
+            "bundleUrl": "https://rubygems.org/downloads/rails-8.1.4.1.gem.sigstore.json"
+          }
+        },
+        {
+          "package": "sqlite3",
+          "version": "2.10.2",
+          "platform": "x86_64-linux-gnu",
+          "lockRequirement": "~> 2.4",
+          "satisfiesLockRequirement": true,
+          "source": "https://rubygems.org/downloads/sqlite3-2.10.2-x86_64-linux-gnu.gem",
+          "digestAlgorithm": "sha256",
+          "publishedDigest": "ca92731ab464df9cae503fa1a439a549e2724f6953c8c05a7769b59366e38f15",
+          "actualDigest": "ca92731ab464df9cae503fa1a439a549e2724f6953c8c05a7769b59366e38f15",
+          "matches": true,
+          "sigstore": {
+            "status": "no_bundle_published",
+            "bundleUrl": "https://rubygems.org/downloads/sqlite3-2.10.2-x86_64-linux-gnu.gem.sigstore.json"
+          }
+        }
+      ],
+      "findings": [],
+      "scope": "dependencias directas declaradas; no instala paquetes ni resuelve dependencias transitivas",
+      "ecosystem": "rubygems"
+    },
+    "sigstore": {
+      "project": "esenario/s10",
+      "observedAt": "2026-11-11T01:23:32.303892+00:00",
+      "status": "not_applicable",
+      "artifacts": [],
+      "findings": [],
+      "reason": "El escenario no versiona artefactos binarios para verificar con Cosign."
+    },
+    "compose": {
+      "project": "/home/runner/work/github-actions-demo/github-actions-demo/esenario/s10",
+      "observedAt": "2026-11-11T01:23:32.742901+00:00",
+      "status": "completed",
+      "composeFile": "esenario/s10/compose.yaml",
+      "images": [
+        "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b"
+      ],
+      "imageScanReports": [
+        {
+          "image": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b",
+          "report": "reports/trivy-image-s10-1.json",
+          "exitCode": 0,
+          "status": "scanned",
+          "stderr": "2026-11-11T01:23:35Z\tINFO\t[vuln] Vulnerability scanning is enabled\n2026-11-11T01:23:35Z\tINFO\tDetected OS\tfamily=\"alpine\" version=\"3.23.6\"\n2026-11-11T01:23:35Z\tINFO\t[alpine] Detecting vulnerabilities...\tos_version=\"3.23\" repository=\"3.23\" pkg_num=21\n2026-11-11T01:23:35Z\tWARN\tUsing severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.\n"
+        }
+      ],
+      "test": {
+        "status": "passed",
+        "service": "test",
+        "exitCode": 0,
+        "stdout": "( 1/28) Upgrading musl (1.2.5-r23 -> 1.2.5-r24)\n( 2/28) Installing jansson (2.14.1-r0)\n( 3/28) Installing libstdc++ (15.2.0-r2)\n( 4/28) Installing zstd-libs (1.5.7-r2)\n( 5/28) Installing binutils (2.45.1-r0)\n( 6/28) Installing libmagic (5.46-r2)\n( 7/28) Installing file (5.46-r2)\n( 8/28) Installing libgomp (15.2.0-r2)\n( 9/28) Installing libatomic (15.2.0-r2)\n(10/28) Installing isl26 (0.26-r1)\n(11/28) Installing mpfr4 (4.2.2-r0)\n(12/28) Installing mpc1 (1.3.1-r1)\n(13/28) Installing gcc (15.2.0-r2)\n(14/28) Installing libstdc++-dev (15.2.0-r2)\n(15/28) Installing musl-dev (1.2.5-r24)\n(16/28) Installing g++ (15.2.0-r2)\n(17/28) Installing make (4.4.1-r3)\n(18/28) Installing fortify-headers (1.1-r5)\n(19/28) Installing patch (2.8-r0)\n(20/28) Installing build-base (0.5-r3)\n(21/28) Installing ncurses-terminfo-base (6.5_p20251123-r0)\n(22/28) Installing libncursesw (6.5_p20251123-r0)\n(23/28) Installing readline (8.3.1-r0)\n(24/28) Installing sqlite (3.53.4-r0)\n(25/28) Installing sqlite-libs (3.53.4-r0)\n(26/28) Installing pkgconf (2.5.1-r0)\n(27/28) Installing sqlite-dev (3.53.4-r0)\n(28/28) Installing tzdata (2026f-r0)\nExecuting busybox-1.37.0-r30.trigger\nOK: 280.8 MiB in 48 packages\nS10 HTTP smoke test passed: 200 {\"status\" => \"ok\", \"scenario\" => \"S0\", \"framework\" => \"Ruby on Rails\"}\n",
+        "stderr": " Network dependency-assessment-s10_default Creating \n Network dependency-assessment-s10_default Created \n Container dependency-assessment-s10-test-run-175613661ac0 Creating \n Container dependency-assessment-s10-test-run-175613661ac0 Created \n"
+      },
+      "findings": [],
+      "services": [
+        "test"
+      ],
+      "cleanup": {
+        "exitCode": 0,
+        "stderr": " Network dependency-assessment-s10_default Removing \n Network dependency-assessment-s10_default Removed \n"
+      }
+    },
+    "containerImageVulnerabilities": [
+      {
+        "image": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b",
+        "target": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b (alpine 3.23.6)",
+        "packageType": "alpine",
+        "packageClass": "os-pkgs",
+        "package": "musl",
+        "installedVersion": "1.2.5-r23",
+        "fixedVersion": "1.2.5-r24",
+        "vulnerabilityId": "CVE-2026-107891",
+        "severity": "HIGH",
+        "cvss": 8.1
+      },
+      {
+        "image": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b",
+        "target": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b (alpine 3.23.6)",
+        "packageType": "alpine",
+        "packageClass": "os-pkgs",
+        "package": "musl-utils",
+        "installedVersion": "1.2.5-r23",
+        "fixedVersion": "1.2.5-r24",
+        "vulnerabilityId": "CVE-2026-107891",
+        "severity": "HIGH",
+        "cvss": 8.1
+      },
+      {
+        "image": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b",
+        "target": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b (alpine 3.23.6)",
+        "packageType": "alpine",
+        "packageClass": "os-pkgs",
+        "package": "zlib",
+        "installedVersion": "1.3.2-r0",
+        "fixedVersion": "1.3.2-r1",
+        "vulnerabilityId": "CVE-2026-85091",
+        "severity": "HIGH",
+        "cvss": 8.1
+      },
+      {
+        "image": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b",
+        "target": "ruby:3.4.10-alpine3.23@sha256:7dea4d37b9bb1002986613843f1e9906f49a76bf8bc321e08c6d8204b1e3ab7b (alpine 3.23.6)",
+        "packageType": "alpine",
+        "packageClass": "os-pkgs",
+        "package": "zlib",
+        "installedVersion": "1.3.2-r0",
+        "fixedVersion": "1.4-r0",
+        "vulnerabilityId": "CVE-2026-4738",
+        "severity": "MEDIUM",
+        "cvss": 0.0
+      }
+    ],
+    "trivy": {
+      "report": "reports/trivy-s10.json",
+      "schemaVersion": 2,
+      "vulnerabilities": [],
+      "licenses": []
+    }
+  }
+}

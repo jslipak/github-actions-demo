@@ -1,0 +1,259 @@
+{
+  "project": "esenario/s5",
+  "policyVersion": "1.2.0",
+  "policySha256": "2ca191caee044247cbe4a18bb008438039c87f36ec6992cb130c1ac1f9952c9c",
+  "observedAt": "2026-11-11T01:24:08.655632+00:00",
+  "decision": "bloquear",
+  "findings": [
+    {
+      "control": "approved_registry",
+      "decision": "bloquear",
+      "message": "El lockfile resuelve una dependencia desde un host no autorizado.",
+      "evidence": {
+        "packagePath": "node_modules/lodash",
+        "url": "https://packages.example.invalid/lodash/-/lodash-4.17.21.tgz",
+        "host": "packages.example.invalid"
+      }
+    },
+    {
+      "control": "artifact_integrity",
+      "decision": "bloquear",
+      "message": "Los bytes del artefacto no coinciden con la integridad publicada por el registro.",
+      "evidence": {
+        "artifact": "esenario/s5/artifacts/lodash-4.17.21-alterado.tgz",
+        "package": "lodash",
+        "version": "4.17.21",
+        "publishedIntegrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+        "actualIntegrity": "sha512-+4yDaLmUikr3QgROuBKSAO2Hvymxqy7GeHy4zwJJChFSQeBi5iJ/aYPrBccFw9UytyC6X7l9GLjsY+bVnelbag==",
+        "matches": false,
+        "referenceSource": "https://registry.npmjs.org/lodash/4.17.21"
+      }
+    },
+    {
+      "control": "vulnerability",
+      "decision": "bloquear",
+      "message": "Vulnerabilidad sobre el umbral de bloqueo.",
+      "evidence": {
+        "target": "package-lock.json",
+        "package": "lodash",
+        "installedVersion": "4.17.21",
+        "vulnerabilityId": "CVE-2026-4800",
+        "severity": "HIGH",
+        "cvss": 9.8
+      }
+    },
+    {
+      "control": "vulnerability",
+      "decision": "revision_manual",
+      "message": "Vulnerabilidad sobre el umbral de revisión.",
+      "evidence": {
+        "target": "package-lock.json",
+        "package": "lodash",
+        "installedVersion": "4.17.21",
+        "vulnerabilityId": "CVE-2025-13465",
+        "severity": "MEDIUM",
+        "cvss": 8.2
+      }
+    }
+  ],
+  "evidence": {
+    "project": "esenario/s5",
+    "policyVersion": "1.2.0",
+    "lockfile": {
+      "manifest": "esenario/s5/package.json",
+      "lock": "esenario/s5/package-lock.json",
+      "mismatches": {}
+    },
+    "resolvedUrls": [
+      {
+        "packagePath": "node_modules/dotenv",
+        "url": "https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz",
+        "host": "registry.npmjs.org"
+      },
+      {
+        "packagePath": "node_modules/lodash",
+        "url": "https://packages.example.invalid/lodash/-/lodash-4.17.21.tgz",
+        "host": "packages.example.invalid"
+      },
+      {
+        "packagePath": "node_modules/zod",
+        "url": "https://registry.npmjs.org/zod/-/zod-3.24.2.tgz",
+        "host": "registry.npmjs.org"
+      }
+    ],
+    "lockfileLicenses": [
+      {
+        "packagePath": "node_modules/dotenv",
+        "version": "16.4.7",
+        "license": "BSD-2-Clause",
+        "source": "esenario/s5/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/lodash",
+        "version": "4.17.21",
+        "license": "MIT",
+        "source": "esenario/s5/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/zod",
+        "version": "3.24.2",
+        "license": "MIT",
+        "source": "esenario/s5/package-lock.json"
+      }
+    ],
+    "lifecycleScripts": [],
+    "artifactIntegrity": [
+      {
+        "artifact": "esenario/s5/artifacts/lodash-4.17.21-alterado.tgz",
+        "package": "lodash",
+        "version": "4.17.21",
+        "publishedIntegrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+        "actualIntegrity": "sha512-+4yDaLmUikr3QgROuBKSAO2Hvymxqy7GeHy4zwJJChFSQeBi5iJ/aYPrBccFw9UytyC6X7l9GLjsY+bVnelbag==",
+        "matches": false,
+        "referenceSource": "https://registry.npmjs.org/lodash/4.17.21"
+      },
+      {
+        "artifact": "esenario/s5/artifacts/lodash-4.17.21.tgz",
+        "package": "lodash",
+        "version": "4.17.21",
+        "publishedIntegrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+        "actualIntegrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+        "matches": true,
+        "referenceSource": "https://registry.npmjs.org/lodash/4.17.21"
+      }
+    ],
+    "maintenance": {
+      "thresholdDays": 730,
+      "observedAt": "2026-11-11T01:24:08.228792+00:00",
+      "packages": [
+        {
+          "package": "dotenv",
+          "declaredVersion": "16.4.7",
+          "latestReleaseAt": "2026-11-09T00:53:33.379000+00:00",
+          "ageDays": 2,
+          "observedAt": "2026-11-11T01:24:08.228792+00:00",
+          "source": "https://registry.npmjs.org/dotenv"
+        },
+        {
+          "package": "lodash",
+          "declaredVersion": "4.17.21",
+          "latestReleaseAt": "2026-04-01T21:01:20.458000+00:00",
+          "ageDays": 223,
+          "observedAt": "2026-11-11T01:24:08.228792+00:00",
+          "source": "https://registry.npmjs.org/lodash"
+        },
+        {
+          "package": "zod",
+          "declaredVersion": "3.24.2",
+          "latestReleaseAt": "2026-10-12T16:29:37.778000+00:00",
+          "ageDays": 29,
+          "observedAt": "2026-11-11T01:24:08.228792+00:00",
+          "source": "https://registry.npmjs.org/zod"
+        }
+      ],
+      "skipped": []
+    },
+    "npmIntegrity": {
+      "project": "esenario/s5",
+      "ecosystem": "npm",
+      "observedAt": "2026-11-11T01:23:20.584778+00:00",
+      "status": "skipped",
+      "findings": [],
+      "preflight": {
+        "eligible": false,
+        "reasons": [
+          "El escenario contiene un registro o una URL de resolución no autorizados."
+        ],
+        "mismatches": {},
+        "unapprovedSources": [
+          {
+            "packagePath": "node_modules/lodash",
+            "url": "https://packages.example.invalid/lodash/-/lodash-4.17.21.tgz"
+          }
+        ],
+        "localDependencies": [],
+        "registryDependencies": [
+          {
+            "packagePath": "node_modules/dotenv",
+            "url": "https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz"
+          },
+          {
+            "packagePath": "node_modules/zod",
+            "url": "https://registry.npmjs.org/zod/-/zod-3.24.2.tgz"
+          }
+        ]
+      },
+      "reason": "Se omitió la instalación para no descargar desde fuentes no autorizadas ni resolver un lockfile inconsistente."
+    },
+    "nonNpmIntegrity": {
+      "project": "esenario/s5",
+      "observedAt": "2026-11-11T01:23:31.955589+00:00",
+      "status": "not_applicable",
+      "directDependencies": [],
+      "findings": [],
+      "scope": "dependencias directas declaradas; no instala paquetes ni resuelve dependencias transitivas",
+      "reason": "Los proyectos npm se verifican con el control npm específico."
+    },
+    "sigstore": {
+      "project": "esenario/s5",
+      "observedAt": "2026-11-11T01:23:32.461280+00:00",
+      "status": "not_applicable",
+      "artifacts": [],
+      "findings": [],
+      "reason": "Los paquetes npm se verifican con npm audit signatures."
+    },
+    "compose": {
+      "project": "/home/runner/work/github-actions-demo/github-actions-demo/esenario/s5",
+      "observedAt": "2026-11-11T01:24:06.399959+00:00",
+      "status": "not_applicable",
+      "composeFile": null,
+      "images": [],
+      "imageScanReports": [],
+      "test": {
+        "status": "not_applicable",
+        "service": "test"
+      },
+      "findings": [],
+      "reason": "El escenario no contiene un archivo Docker Compose."
+    },
+    "trivy": {
+      "report": "reports/trivy-s5.json",
+      "schemaVersion": 2,
+      "vulnerabilities": [
+        {
+          "target": "package-lock.json",
+          "package": "lodash",
+          "installedVersion": "4.17.21",
+          "vulnerabilityId": "CVE-2026-4800",
+          "severity": "HIGH",
+          "cvss": 9.8
+        },
+        {
+          "target": "package-lock.json",
+          "package": "lodash",
+          "installedVersion": "4.17.21",
+          "vulnerabilityId": "CVE-2025-13465",
+          "severity": "MEDIUM",
+          "cvss": 8.2
+        }
+      ],
+      "licenses": [
+        {
+          "target": "package-lock.json",
+          "package": "dotenv",
+          "license": "BSD-2-Clause"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "lodash",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "zod",
+          "license": "MIT"
+        }
+      ]
+    }
+  }
+}

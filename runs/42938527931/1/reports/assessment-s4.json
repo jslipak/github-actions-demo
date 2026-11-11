@@ -1,0 +1,233 @@
+{
+  "project": "esenario/s4",
+  "policyVersion": "1.2.0",
+  "policySha256": "2ca191caee044247cbe4a18bb008438039c87f36ec6992cb130c1ac1f9952c9c",
+  "observedAt": "2026-11-11T01:24:07.963177+00:00",
+  "decision": "bloquear",
+  "findings": [
+    {
+      "control": "lifecycle_script",
+      "decision": "bloquear",
+      "message": "Se encontró el evento de ciclo de vida postinstall; el comando no se ejecutó.",
+      "evidence": {
+        "file": "esenario/s4/fixtures/lab-postinstall-fixture/package.json",
+        "event": "postinstall",
+        "command": "node -e \"require('fs').writeFileSync('postinstall-marker.txt','executed')\""
+      }
+    }
+  ],
+  "evidence": {
+    "project": "esenario/s4",
+    "policyVersion": "1.2.0",
+    "lockfile": {
+      "manifest": "esenario/s4/package.json",
+      "lock": "esenario/s4/package-lock.json",
+      "mismatches": {}
+    },
+    "resolvedUrls": [
+      {
+        "packagePath": "node_modules/chalk",
+        "url": "https://registry.npmjs.org/chalk/-/chalk-5.6.2.tgz",
+        "host": "registry.npmjs.org"
+      },
+      {
+        "packagePath": "node_modules/dotenv",
+        "url": "https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz",
+        "host": "registry.npmjs.org"
+      }
+    ],
+    "lockfileLicenses": [
+      {
+        "packagePath": "fixtures/lab-postinstall-fixture",
+        "version": "1.0.0",
+        "license": "MIT",
+        "source": "esenario/s4/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/chalk",
+        "version": "5.6.2",
+        "license": "MIT",
+        "source": "esenario/s4/package-lock.json"
+      },
+      {
+        "packagePath": "node_modules/dotenv",
+        "version": "16.4.7",
+        "license": "BSD-2-Clause",
+        "source": "esenario/s4/package-lock.json"
+      }
+    ],
+    "lifecycleScripts": [
+      {
+        "file": "esenario/s4/fixtures/lab-postinstall-fixture/package.json",
+        "event": "postinstall",
+        "command": "node -e \"require('fs').writeFileSync('postinstall-marker.txt','executed')\""
+      }
+    ],
+    "maintenance": {
+      "thresholdDays": 730,
+      "observedAt": "2026-11-11T01:24:07.764235+00:00",
+      "packages": [
+        {
+          "package": "chalk",
+          "declaredVersion": "5.6.2",
+          "latestReleaseAt": "2026-09-27T03:40:44.397000+00:00",
+          "ageDays": 44,
+          "observedAt": "2026-11-11T01:24:07.764235+00:00",
+          "source": "https://registry.npmjs.org/chalk"
+        },
+        {
+          "package": "dotenv",
+          "declaredVersion": "16.4.7",
+          "latestReleaseAt": "2026-11-09T00:53:33.379000+00:00",
+          "ageDays": 2,
+          "observedAt": "2026-11-11T01:24:07.764235+00:00",
+          "source": "https://registry.npmjs.org/dotenv"
+        }
+      ],
+      "skipped": [
+        {
+          "package": "lab-postinstall-fixture",
+          "declaredVersion": "file:./fixtures/lab-postinstall-fixture",
+          "reason": "non-registry dependency"
+        }
+      ]
+    },
+    "npmIntegrity": {
+      "project": "esenario/s4",
+      "ecosystem": "npm",
+      "observedAt": "2026-11-11T01:23:18.827344+00:00",
+      "status": "passed",
+      "findings": [],
+      "preflight": {
+        "eligible": true,
+        "reasons": [],
+        "mismatches": {},
+        "unapprovedSources": [],
+        "localDependencies": [
+          {
+            "packagePath": "node_modules/lab-postinstall-fixture",
+            "resolved": "fixtures/lab-postinstall-fixture"
+          }
+        ],
+        "registryDependencies": [
+          {
+            "packagePath": "node_modules/chalk",
+            "url": "https://registry.npmjs.org/chalk/-/chalk-5.6.2.tgz"
+          },
+          {
+            "packagePath": "node_modules/dotenv",
+            "url": "https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz"
+          }
+        ]
+      },
+      "npmVersion": "11.19.1",
+      "nodeVersion": "v24.22.2",
+      "install": {
+        "command": [
+          "npm",
+          "ci",
+          "--ignore-scripts",
+          "--no-audit",
+          "--no-fund",
+          "--registry=https://registry.npmjs.org/",
+          "--userconfig=<configuración temporal>"
+        ],
+        "exitCode": 0,
+        "scriptsIgnored": true,
+        "stdout": "\nadded 3 packages in 523ms\n",
+        "stderr": ""
+      },
+      "lifecycleMarkerCheck": {
+        "checked": true,
+        "marker": "postinstall-marker.txt",
+        "createdOrChangedDuringInstall": [],
+        "scriptsIgnored": true
+      },
+      "signatureVerification": {
+        "command": [
+          "npm",
+          "audit",
+          "signatures",
+          "--json",
+          "--include-attestations"
+        ],
+        "summaryCommand": [
+          "npm",
+          "audit",
+          "signatures"
+        ],
+        "exitCode": 0,
+        "summaryExitCode": 0,
+        "registrySignatures": "verified",
+        "verifiedRegistrySignatureCount": 2,
+        "registryDependenciesExpected": 2,
+        "humanSummary": "audited 2 packages in 0s\n\n2 packages have verified registry signatures\n\n",
+        "invalid": [],
+        "missing": [],
+        "provenance": "no_attestation_reported",
+        "verifiedAttestations": [],
+        "localDependenciesNotRegistrySigned": [
+          {
+            "packagePath": "node_modules/lab-postinstall-fixture",
+            "resolved": "fixtures/lab-postinstall-fixture"
+          }
+        ],
+        "summaryError": null,
+        "stderr": ""
+      }
+    },
+    "nonNpmIntegrity": {
+      "project": "esenario/s4",
+      "observedAt": "2026-11-11T01:23:31.901864+00:00",
+      "status": "not_applicable",
+      "directDependencies": [],
+      "findings": [],
+      "scope": "dependencias directas declaradas; no instala paquetes ni resuelve dependencias transitivas",
+      "reason": "Los proyectos npm se verifican con el control npm específico."
+    },
+    "sigstore": {
+      "project": "esenario/s4",
+      "observedAt": "2026-11-11T01:23:32.419788+00:00",
+      "status": "not_applicable",
+      "artifacts": [],
+      "findings": [],
+      "reason": "Los paquetes npm se verifican con npm audit signatures."
+    },
+    "compose": {
+      "project": "/home/runner/work/github-actions-demo/github-actions-demo/esenario/s4",
+      "observedAt": "2026-11-11T01:24:06.359078+00:00",
+      "status": "not_applicable",
+      "composeFile": null,
+      "images": [],
+      "imageScanReports": [],
+      "test": {
+        "status": "not_applicable",
+        "service": "test"
+      },
+      "findings": [],
+      "reason": "El escenario no contiene un archivo Docker Compose."
+    },
+    "trivy": {
+      "report": "reports/trivy-s4.json",
+      "schemaVersion": 2,
+      "vulnerabilities": [],
+      "licenses": [
+        {
+          "target": "package-lock.json",
+          "package": "chalk",
+          "license": "MIT"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "dotenv",
+          "license": "BSD-2-Clause"
+        },
+        {
+          "target": "package-lock.json",
+          "package": "lab-postinstall-fixture",
+          "license": "MIT"
+        }
+      ]
+    }
+  }
+}
